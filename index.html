@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <base href="/">
+
+    <!-- Grunt:Build:CSSSection -->
+
+    <link href="bower/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Grunt:Build:CSSSection -->
+
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="icon" href="images/favicon.png">
+
+</head>
+<body>
+
+<!-- Grunt:Build:JSSection -->
+
+<script src="bower/jquery/dist/jquery.js"></script>
+
+<script src="app/core/view/view.js"></script>
+<script src="app/core/view/plugins/date.js"></script>
+<script src="app/core/view/plugins/partial.js"></script>
+<script src="app/core/base64.js"></script>
+
+<script src="app/core/storage/adapters/cookie.js"></script>
+<script src="app/core/storage/storage.js"></script>
+
+<script src="app/core/listener.js"></script>
+<script src="app/core/bootstrap.js"></script>
+<script src="app/core/modules.js"></script>
+
+<script src="app/services/loader.js"></script>
+<script src="app/services/api.js"></script>
+
+<script src="app/modules/404/index.js"></script>
+<script type="application/xhtml+xml" data-view="404/view/index" data-src="app/modules/404/view/index.html"></script>
+
+<script src="app/modules/layout/index.js"></script>
+<script type="application/xhtml+xml" data-view="layout/view/index" data-src="app/modules/layout/view/index.html"></script>
+
+<script src="app/modules/index/index.js"></script>
+<script type="application/xhtml+xml" data-view="index/view/index" data-src="app/modules/index/view/index.html"></script>
+
+<!-- Grunt:Build:JSSection -->
+
+<!-- Grunt:Build:Config -->
+
+<script>
+    var config = {
+        "endpoint": 'http://backend.qgift/partner'
+    };
+</script>
+
+<!-- Grunt:Build:Config -->
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "front",
+  "version" : "0.1",
+  "dependencies" : {
+    "bootstrap": "latest"
+  }
+}
