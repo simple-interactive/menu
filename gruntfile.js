@@ -2,10 +2,12 @@ module.exports = function(grunt) {
 
     var config = {
         prod : {
-            endpoint: 'http://backend.qgifty.com/partner'
+            endpoint: 'http://backend/',
+            token: 'some-token'
         },
         dev: {
-            endpoint: 'http://backend.qgift/partner'
+            endpoint: 'http://backend/',
+            token: 'some-token'
         }
     };
 
@@ -22,7 +24,7 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     {cwd: 'images', src: [ '**' ], dest: build+'/images', expand: true},
-                    {cwd: 'bower/bootstrap/dist/fonts', src: [ '**' ], dest: build+'/fonts', expand: true},
+                    {cwd: 'bower_components/bootstrap/dist/fonts', src: [ '**' ], dest: build+'/fonts', expand: true},
                     {src: 'index.html', dest: build+'/index.html'},
                     {src: '.htaccess', dest: build+'/.htaccess'}
                 ]
@@ -32,8 +34,8 @@ module.exports = function(grunt) {
             build: {
                 files: {
                     'js': [
-                        'bower/jquery/dist/jquery.js',
-                        'bower/bootstrap/dist/js/bootstrap.js',
+                        'bower_components/jquery/dist/jquery.js',
+                        'bower_components/bootstrap/dist/js/bootstrap.js',
                         'app/**/*.js'
                     ]
                 }
@@ -43,7 +45,8 @@ module.exports = function(grunt) {
             combine: {
                 files: {
                     'css': [
-                        'bower/bootstrap/dist/css/bootstrap.css',
+                        'bower_components/bootstrap/dist/css/bootstrap.css',
+                        'bower_components/animate-css/index.css',
                         'css/**/*.css'
                     ]
                 }

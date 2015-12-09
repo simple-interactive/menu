@@ -1,0 +1,29 @@
+.company {
+    width: 100%;
+    text-align: center;
+}
+
+.company .logo {
+    font-size: 60px;
+    font-weight: bold;
+    font-family: "Bookman", Georgia, "Times New Roman", serif;
+    margin-top: 20px;
+}
+
+.company .slogan {
+    font-family: "Bookman", Georgia, "Times New Roman", serif;
+    font-size: 20px;
+}
+
+.company .line {
+    border: 1px solid red;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid;
+    margin: 1em 0;
+    padding: 0;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}

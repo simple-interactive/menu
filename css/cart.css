@@ -1,0 +1,39 @@
+.cart {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: auto;
+    height: 50px;
+    border-bottom-left-radius: 5px;
+}
+
+.cart > * {
+    float: left;
+}
+
+.cart > .icon {
+    margin-left: 17px;
+    font-size: 36px;
+    margin-top: 5px;
+}
+
+.cart > .text {
+    margin-top: 13px;
+    width: 120px;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.cart > .amount {
+    display: none;
+    margin-top: 9px;
+    margin-right: 20px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+}

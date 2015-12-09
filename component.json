@@ -2,6 +2,7 @@
   "name": "front",
   "version" : "0.1",
   "dependencies" : {
-    "bootstrap": "latest"
+    "bootstrap": "latest",
+    "animate-css": "https://raw.github.com/daneden/animate.css/master/animate.css"
   }
 }

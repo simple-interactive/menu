@@ -1,0 +1,21 @@
+<div class="modal fade" id="plugin-confirm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><%= caption %></h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-<%= style %>"><%= content %></div>
+            </div>
+            <div class="modal-footer">
+
+                <% for (var i=0 ; i< callbacks.length; i++) { %>
+                    <button type="button" class="btn btn-<%= callbacks[i].style %>" data-click="<%= i %>">
+                        <%= callbacks[i].title %>
+                    </button>
+                <% } %>
+
+            </div>
+        </div>
+    </div>
+</div>

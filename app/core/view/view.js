@@ -23,6 +23,13 @@ window.view = function() {
                     .split("\r").join("\\'")
                 + "');} return p.join('');";
 
+
+            if (!data) {
+                data = {};
+            }
+
+            data.plugins = window.view.plugins;
+
             if (!callback) {
                 return (new Function("obj", templateCode))(data);
             }
@@ -48,13 +55,13 @@ $(function(){
                 $.get($(view).data('src'), function(template){
                     window.view.templates[$(view).data('view')] = template;
                     if (Object.keys(window.view.templates).length == templatesCount) {
-                        bootstrap.run();
+                        dispatcher.dispatch();
                     }
                 });
             })(this);
         });
     }
     else {
-        bootstrap.run();
+        dispatcher.dispatch();
     }
 });

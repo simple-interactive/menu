@@ -1,60 +1,120 @@
 window.services.api = function(){
 
+    /**
+     * @type {{endpoint: (config.endpoint|string)}}
+     */
     this.config = {
-        endpoint : config.endpoint
+        endpoint : config.endpoint,
+        token: config.token
     };
 
+    /**
+     * @type {string}
+     */
     this.token = null;
-    this.company = null;
-    this.address = null;
 
-    this.setToken = function (token) {
+    /**
+     * Returns auth token
+     *
+     * @param {string} token
+     */
+    this.setToken = function(token){
         self.token = token;
     };
 
-    this.setCompany = function (company) {
-        self.company = company;
+    /****************************** SECTION *******************************/
+    /**
+     * Returns section list by provided parent section ID
+     * METHOD: GET
+     * URL:    section?parentId=parentId
+     *
+     * @param {string|null} parentId
+     * @param {function} callback
+     */
+    this.getSections = function(parentId, callback){
+        var params = (parentId != null)?{parentId: parentId}:{};
+        self.call('get', 'section/list', params, callback);
     };
 
-    this.setAddress = function (address) {
-        self.address = address;
+    /**
+     * Returns section object by provided ID
+     * Method: GET
+     * URL:    section/get?id=sectionId
+     *
+     * @param {string}   sectionId
+     * @param {function} callback
+     */
+    this.getSection = function(sectionId, callback){
+        self.call('get', 'section', {id: sectionId}, callback);
     };
 
-    this.login = function(data, callback){
+    /**************************** END SECTION *****************************/
 
-        if (!self.config.endpoint) {
-            console.log("API Endpoint was not specified");
-            return;
-        }
-
-        $.post([self.config.endpoint, 'account'].join('/'), data, callback);
+    /**
+     * Returns list of founded products
+     *
+     * @param {string} search
+     * @param {number} limit
+     * @param {number} offset
+     * @param {function} callback
+     */
+    this.getSearchProducts = function(search, limit, offset, callback){
+        self.call('get', 'product/search', {search: search, limit: limit, offset: offset}, callback);
     };
 
-    this.getCertificateByDigitNumber = function(number, callback){
-        self.call('certificate', {id: number, code: 'numeric'}, callback);
+    /**
+     * Returns list of products by section
+     *
+     * @param {string} sectionId
+     * @param {number} limit
+     * @param {number} offset
+     * @param {function} callback
+     */
+    this.getSectionProducts = function(sectionId, limit, offset, callback){
+        self.call('get', 'product/section', {sectionId: sectionId, limit: limit, offset: offset}, callback);
     };
 
-    this.getCertificateByString = function(string, callback){
-        self.call('certificate', {id: string, code: 'string'}, callback);
+    /**
+     * Gets product data by id
+     *
+     * @param {String} id
+     * @param {Function} callback
+     */
+    this.getProduct = function(id, callback){
+        self.call('get', 'product', {id: id}, callback);
     };
 
-    this.useCertificate = function (certificate, product, callback) {
-        self.call(
-            'certificate/use',
-            {certificate: certificate, product: product},
-            callback
-        );
+    /**
+     * Deletes product by id
+     *
+     * @param {String} id
+     * @param {Function} callback
+     */
+    this.deleteProduct = function(id, callback){
+        self.call('post', 'product/delete', {id: id}, callback);
     };
 
-    this.getHistory = function (status, start, count, callback) {
-        self.call('history', {
-            status: status,
-            start: start,
-            count: count
-        }, callback);
-    };
+    /**************************** END PRODUCT *****************************/
 
-    this.call = function(method, data, callback){
+
+   this.getStyles = function(callback){
+       callback({styles : {
+           brand: 'rgba(196, 8, 31, 0.7)',
+           foreground: 'black',
+           background: 'white'
+       }});
+   };
+
+    /**
+     * Send request to an api
+     *
+     * @param {string} method
+     * @param {string} endpoint
+     * @param {object} data
+     * @param {function} callback
+     * @param {function|null} [failCallback=null]
+     */
+    this.call = function(method, endpoint, data, callback, failCallback){
 
         if (!self.config.endpoint) {
             console.log("API Endpoint was not specified");
@@ -62,25 +122,41 @@ window.services.api = function(){
         }
 
         $.ajax({
-            url: [self.config.endpoint, method].join('/'),
+            url: [self.config.endpoint, endpoint].join('/'),
             data: data,
-            type: "GET",
+            type: method.toUpperCase(),
             dataType: 'json',
             beforeSend: function(request){
                 request.setRequestHeader('x-auth', self.token);
             },
             complete: function (response) {
 
+                if (response.status == 403) {
+                    services.user.forget();
+                    return false;
+                }
+
                 var parsedResponse = {
                     success: false,
-                    message: 'Сервер времено не отвечает'
+                    message: 'the-server-is-currently-not-responding'
                 };
 
                 try {
                     parsedResponse = JSON.parse(response.responseText);
                 } catch (err) {}
 
-                callback(parsedResponse);
+                if (response.status == 200) {
+                    callback(parsedResponse);
+                }
+                else if (response.status == 400) {
+                    failCallback(parsedResponse);
+                }
+                else {
+                    failCallback({
+                        success: false,
+                        message: 'the-server-is-currently-not-responding'
+                    });
+                }
             }
         });
     };

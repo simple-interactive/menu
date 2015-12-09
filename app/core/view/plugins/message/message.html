@@ -1,0 +1,18 @@
+<div class="modal fade" id="plugin-message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><%= caption %></h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-<%= style %>"><%= content %></div>
+            </div>
+            <div class="modal-footer">
+                <% for (var i = 0; i < buttons.length ; i++ ) { %>
+                    <button type="button" class="btn btn-<%= buttons[i].style %>" data-dismiss="modal"><%= buttons[i].title %></button>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>

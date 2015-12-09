@@ -1,0 +1,12 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
+}
+
+body {
+
+    background-size: cover;
+    background-repeat: no-repeat;
+}
