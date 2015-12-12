@@ -5,8 +5,13 @@ html, body {
     font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
 }
 
-body {
-
+body .background-image {
     background-size: cover;
     background-repeat: no-repeat;
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    -webkit-filter: blur(3px) brightness(0.5);
 }

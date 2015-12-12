@@ -25,6 +25,7 @@ module.exports = function(grunt) {
                 files: [
                     {cwd: 'images', src: [ '**' ], dest: build+'/images', expand: true},
                     {cwd: 'bower_components/bootstrap/dist/fonts', src: [ '**' ], dest: build+'/fonts', expand: true},
+                    {cwd: 'bower_components/components-font-awesome/fonts', src: [ '**' ], dest: build+'/fonts', expand: true},
                     {src: 'index.html', dest: build+'/index.html'},
                     {src: '.htaccess', dest: build+'/.htaccess'}
                 ]
@@ -47,6 +48,7 @@ module.exports = function(grunt) {
                     'css': [
                         'bower_components/bootstrap/dist/css/bootstrap.css',
                         'bower_components/animate-css/index.css',
+                        'bower_components/components-font-awesome/css/font-awesome.css',
                         'css/**/*.css'
                     ]
                 }

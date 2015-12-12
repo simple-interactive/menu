@@ -8,20 +8,6 @@ window.services.api = function(){
         token: config.token
     };
 
-    /**
-     * @type {string}
-     */
-    this.token = null;
-
-    /**
-     * Returns auth token
-     *
-     * @param {string} token
-     */
-    this.setToken = function(token){
-        self.token = token;
-    };
-
     /****************************** SECTION *******************************/
     /**
      * Returns section list by provided parent section ID
@@ -98,11 +84,16 @@ window.services.api = function(){
 
 
    this.getStyles = function(callback){
-       callback({styles : {
-           brand: 'rgba(196, 8, 31, 0.7)',
-           foreground: 'black',
-           background: 'white'
-       }});
+       callback({
+           styles : {
+               brand: 'rgba(196, 8, 31, 0.7)',
+               foreground: 'black',
+               background: 'white'
+           },
+           background: {
+               url: "http://interestingukraine.kiev.ua/wp-content/uploads/2013/11/restoran-sutra.jpg"
+           }
+       });
    };
 
     /**
@@ -127,7 +118,7 @@ window.services.api = function(){
             type: method.toUpperCase(),
             dataType: 'json',
             beforeSend: function(request){
-                request.setRequestHeader('x-auth', self.token);
+                request.setRequestHeader('x-auth', self.config.token);
             },
             complete: function (response) {
 
@@ -148,10 +139,10 @@ window.services.api = function(){
                 if (response.status == 200) {
                     callback(parsedResponse);
                 }
-                else if (response.status == 400) {
+                else if (response.status == 400 && failCallback) {
                     failCallback(parsedResponse);
                 }
-                else {
+                else if (failCallback) {
                     failCallback({
                         success: false,
                         message: 'the-server-is-currently-not-responding'

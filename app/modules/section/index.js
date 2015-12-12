@@ -1,9 +1,13 @@
 modules.section = function(){
 
+    this.parentId = null;
+
     this.init = function () {
 
-        self.view.render('section/view/index', {}, function(renderedHtml){
-            $(self.element).html(renderedHtml);
+        services.api.getSections(null, function(sections){
+            self.view.render('section/view/main', sections, function(renderedHtml){
+                $(self.element).html(renderedHtml);
+            });
         });
     };
 

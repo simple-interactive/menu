@@ -1,53 +1,33 @@
 .main-menu {
-    height: 50%;
-    display: table;
+    height: 300px;
+    width: 900px;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.main-menu.item6 {
-    width: 41%;
-}
-
-.main-menu.item6 > .item {
-    float: left;
-    width: 33.3333%;
-    height: 50%;
-}
-
-.main-menu.item6 > .item > .title {
-    padding-top: 10px;
-    padding-bottom: 20px;
-}
-
-.main-menu.item3, .main-menu.item4, .main-menu.item5 {
-    width: 95%;
-}
-
-.main-menu.item2 {
-    width: 66.33333%;
-}
-
-.main-menu.item1 {
-    width: 32.33333%;
+    position: relative;
 }
 
 .main-menu > .item {
-    display: table-cell;
-    vertical-align: middle;
+    float: left;
+    width: 300px;
+    height: 300px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.main-menu > .item > img {
+.main-menu > .item > .image {
     -webkit-filter: invert(0.1);
     border-radius: 50%;
     width: 80%;
-    display: block;
+    height: 80%;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-shadow: 0px 0px 11px 3px rgba(0,0,0,1);
     -moz-box-shadow: 0px 0px 11px 3px rgba(0,0,0,1);
     box-shadow: 0px 0px 11px 3px rgba(0,0,0,1);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main-menu > .item > .title {
@@ -56,4 +36,31 @@
     font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
     font-size: 1.6em;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.main-menu.item1 {
+    width: 300px;
+}
+
+.main-menu.item2 {
+    width: 600px;
+}
+
+.main-menu.item3 {
+    width: 900px;
+}
+
+.main-menu.item4 {
+    width: 1200px;
+}
+
+.main-menu.item5 {
+    width: 900px;
+    margin-top: 120px;
+}
+
+.main-menu.item5 > .item {
+    margin-bottom: 40px;
+    width: 180px;
+    height: 180px;
 }
