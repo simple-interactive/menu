@@ -2,12 +2,12 @@ module.exports = function(grunt) {
 
     var config = {
         prod : {
-            endpoint: 'http://backend/',
-            token: 'some-token'
+            endpoint: 'http://192.168.1.103:82',
+            token: '27c2f4bb1748ae677a4bf6c160122ed4'
         },
         dev: {
-            endpoint: 'http://backend/',
-            token: 'some-token'
+            endpoint: 'http://192.168.1.103:82',
+            token: '27c2f4bb1748ae677a4bf6c160122ed4'
         }
     };
 
@@ -37,6 +37,7 @@ module.exports = function(grunt) {
                     'js': [
                         'bower_components/jquery/dist/jquery.js',
                         'bower_components/bootstrap/dist/js/bootstrap.js',
+                        'bower_components/swiper/dist/js/swiper.js',
                         'app/**/*.js'
                     ]
                 }
@@ -49,6 +50,7 @@ module.exports = function(grunt) {
                         'bower_components/bootstrap/dist/css/bootstrap.css',
                         'bower_components/animate-css/index.css',
                         'bower_components/components-font-awesome/css/font-awesome.css',
+                        'bower_components/swiper/dist/css/swiper.css',
                         'css/**/*.css'
                     ]
                 }

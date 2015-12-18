@@ -1,0 +1,25 @@
+.section-header {
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.section-header .logo {
+    font-size: 60px;
+    font-weight: bold;
+    font-family: "Bookman", Georgia, "Times New Roman", serif;
+    margin-top: 20px;
+}
+
+.section-header .line {
+    border: 1px solid red;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid;
+    margin: 1em 0;
+    padding: 0;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}

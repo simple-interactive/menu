@@ -4,6 +4,7 @@
   "dependencies" : {
     "bootstrap": "latest",
     "animate-css": "https://raw.github.com/daneden/animate.css/master/animate.css",
-    "components-font-awesome": "*"
+    "components-font-awesome": "*",
+    "swiper": "*"
   }
 }

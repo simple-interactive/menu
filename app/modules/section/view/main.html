@@ -8,7 +8,7 @@
 
     <% for (var i=0; i<sections.length; i++) { %>
 
-        <div class="item" data-section="true" data-id="<%= sections[i].id %>">
+        <div class="item" data-section="true" data-index="<%= i %>">
             <div class="image" style="background-image: url(<%= sections[i].image.url %>)"></div>
             <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
         </div>

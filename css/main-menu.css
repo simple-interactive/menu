@@ -1,13 +1,13 @@
 .main-menu {
     height: 300px;
     width: 900px;
-    margin-top: 40px;
+    margin-top: 130px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
 }
 
-.main-menu > .item {
+.main-menu .item {
     float: left;
     width: 300px;
     height: 300px;
@@ -15,7 +15,7 @@
     margin-left: auto;
 }
 
-.main-menu > .item > .image {
+.main-menu .item > .image {
     -webkit-filter: invert(0.1);
     border-radius: 50%;
     width: 80%;
@@ -30,7 +30,7 @@
     background-size: cover;
 }
 
-.main-menu > .item > .title {
+.main-menu .item > .title {
     padding-top: 20px;
     text-align: center;
     font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
@@ -63,4 +63,43 @@
     margin-bottom: 40px;
     width: 180px;
     height: 180px;
+}
+
+.main-menu.sub-menu {
+    width: 1000px;
+    height: 520px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.main-menu.sub-menu .item {
+    margin-bottom: 40px;
+    width: 225px;
+    height: 225px;
+}
+
+.swiper-container {
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-wrapper {
+    width: 900px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-pagination {
+    top: 50% !important;
+    right: 10px !important;
+}
+
+.swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    border-width: 3px;
+    border-style: solid;
+    opacity: 1;
 }

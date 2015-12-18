@@ -1,0 +1,20 @@
+<div class="section-header">
+    <div class="logo" data-stylized="true" data-color="brand"><%= section.title %></div>
+    <hr class="line" data-stylized="true" data-border-color="background" />
+</div>
+
+<div class="main-menu sub-menu">
+
+    <div data-swiper="true" data-amount="8">
+
+        <% for (var i=0; i<sections.length; i++) { %>
+
+            <div class="item" data-section="true" data-index="<%= i %>">
+                <div class="image" style="background-image: url(<%= sections[i].image.url %>)"></div>
+                <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
+            </div>
+
+        <% } %>
+    </div>
+
+</div>

@@ -9,16 +9,18 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="bower_components/animate-css/index.css" rel="stylesheet" />
     <link href="bower_components/components-font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="bower_components/swiper/dist/css/swiper.css" rel="stylesheet" />
 
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/cart.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
     <link href="css/company.css" rel="stylesheet" />
     <link href="css/main-menu.css" rel="stylesheet" />
+    <link href="css/section.css" rel="stylesheet" />
 
     <!-- Grunt:Build:CSSSection -->
 
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=2" />
     <link rel="icon" href="images/favicon.png">
 
 </head>
@@ -28,6 +30,7 @@
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/swiper/dist/js/swiper.js"></script>
 
 
 <script src="app/core/view/view.js"></script>
@@ -50,9 +53,7 @@
 <script src="app/services/api.js"></script>
 <script src="app/services/ui.js"></script>
 
-
 <script src="app/bootstrap.js"></script>
-
 
 <script src="app/modules/stylize/index.js"></script>
 <script type="application/xhtml+xml" data-view="stylize/view/index" data-src="app/modules/stylize/view/index.html"></script>
@@ -62,6 +63,7 @@
 
 <script src="app/modules/section/index.js"></script>
 <script type="application/xhtml+xml" data-view="section/view/main" data-src="app/modules/section/view/main.html"></script>
+<script type="application/xhtml+xml" data-view="section/view/sub-section" data-src="app/modules/section/view/sub-section.html"></script>
 
 <!-- Grunt:Build:JSSection -->
 
@@ -69,7 +71,7 @@
 
 <script>
     var config = {
-        endpoint: 'http://simple.backend',
+        endpoint: 'http://192.168.1.103:82',
         token: '27c2f4bb1748ae677a4bf6c160122ed4'
     };
 </script>
