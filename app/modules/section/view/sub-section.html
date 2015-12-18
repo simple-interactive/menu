@@ -3,14 +3,20 @@
     <hr class="line" data-stylized="true" data-border-color="background" />
 </div>
 
+<div data-container-menu="true"></div>
+
 <div class="main-menu sub-menu">
 
-    <div data-swiper="true" data-amount="8">
+    <% if (sections.length > 8) { %>
+        <div data-swiper="true" data-amount="8" data-paging="true">
+    <% } else { %>
+        <div>
+    <% } %>
 
         <% for (var i=0; i<sections.length; i++) { %>
 
             <div class="item" data-section="true" data-index="<%= i %>">
-                <div class="image" style="background-image: url(<%= sections[i].image.url %>)"></div>
+                <div class="image" data-stylized="true" data-border-color="background" style="background-image: url(<%= sections[i].image.url %>)"></div>
                 <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
             </div>
 

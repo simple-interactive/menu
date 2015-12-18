@@ -1,0 +1,34 @@
+<% if (sections.length) { %>
+
+<div class="menu-show animated shake" data-menu-open="true">
+    <span data-stylized="true" data-color="brand" class="fa fa-bars"></span>
+</div>
+
+<div class="menu-backdrop" data-menu-close="true" data-stylized="true" data-background-color="foreground"></div>
+
+<div class="menu" data-stylized="true" data-background-color="foreground">
+
+    <div class="menu-wrapper">
+
+        <div class="menu-close animated shake" data-menu-close="true">
+            <span data-stylized="true" data-color="brand" class="fa fa-close"></span>
+        </div>
+
+        <div class="items" data-swiper="true" data-amount="4">
+
+            <% for (var i=0; i<sections.length; i++) { %>
+
+                <div class="item" data-main-section="true" data-index="<%= i %>">
+                    <div class="image" style="background-image: url(<%= sections[i].image.url %>)"></div>
+                    <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</div>
+
+<% } %>

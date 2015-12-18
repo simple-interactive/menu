@@ -1,7 +1,6 @@
 window.services.ui = function(){
 
     this.init = function () {
-
         this.initiateAnimated();
         this.swiper();
     };
@@ -16,7 +15,10 @@ window.services.ui = function(){
 
             $(el).wrap('<div class="swiper-container"></div>');
             $(el).addClass('swiper-wrapper');
-            $(el).parent().append('<div class="swiper-pagination"></div>');
+
+            if ($(el).data('paging')) {
+                $(el).parent().append('<div class="swiper-pagination"></div>');
+            }
 
             var lis = $(el).children();
             var amount = $(el).data('amount');
@@ -25,13 +27,18 @@ window.services.ui = function(){
                 lis.slice(i, i+amount).wrapAll('<div class="swiper-slide"></div>');
             }
 
-            new Swiper ($(el).parent(), {
+            var options = {
                 // Optional parameters
                 direction: 'vertical',
                 loop: false,
-                pagination: '.swiper-pagination',
                 spaceBetween: 50
-            });
+            };
+
+            if ($(el).data('paging')) {
+                options.pagination = '.swiper-pagination';
+            }
+
+            new Swiper ($(el).parent(), options);
 
             $(el).attr('data-swiped', 'true');
         });
