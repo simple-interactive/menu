@@ -112,6 +112,27 @@ window.services.api = function(){
             return;
         }
 
+        var cacheKey = {
+            endpoint: endpoint,
+            data: data
+        };
+
+        cacheKey = Base64.encode(JSON.stringify(cacheKey));
+
+        if (cacheData = storage.getItem(cacheKey)) {
+
+            var cachedData = JSON.parse(Base64.decode(cacheData));
+
+            // 10 minutes cache
+            if (Date.now() - cachedData.time > 600000) {
+                storage.removeItem(cacheKey);
+            }
+            else {
+                callback(cachedData);
+                return;
+            }
+        }
+
         $.ajax({
             url: [self.config.endpoint, endpoint].join('/'),
             data: data,
@@ -123,7 +144,6 @@ window.services.api = function(){
             complete: function (response) {
 
                 if (response.status == 403) {
-                    services.user.forget();
                     return false;
                 }
 
@@ -137,6 +157,10 @@ window.services.api = function(){
                 } catch (err) {}
 
                 if (response.status == 200) {
+                    var response = parsedResponse;
+                    response.time = Date.now();
+
+                    storage.setItem(cacheKey, Base64.encode(JSON.stringify(response)));
                     callback(parsedResponse);
                 }
                 else if (response.status == 400 && failCallback) {
