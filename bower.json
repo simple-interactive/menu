@@ -3,8 +3,8 @@
   "version" : "0.1",
   "dependencies" : {
     "bootstrap": "latest",
-    "animate-css": "https://raw.github.com/daneden/animate.css/master/animate.css",
     "components-font-awesome": "*",
-    "swiper": "*"
+    "swiper": "*",
+    "jquery.transit": "*"
   }
 }

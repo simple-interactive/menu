@@ -2,11 +2,11 @@ module.exports = function(grunt) {
 
     var config = {
         prod : {
-            endpoint: 'http://185.70.109.10:85',
+            endpoint: 'http://192.168.1.103:82',
             token: '27c2f4bb1748ae677a4bf6c160122ed4'
         },
         dev: {
-            endpoint: 'http://185.70.109.10:85',
+            endpoint: 'http://192.168.1.103:82',
             token: '27c2f4bb1748ae677a4bf6c160122ed4'
         }
     };
@@ -38,6 +38,7 @@ module.exports = function(grunt) {
                         'bower_components/jquery/dist/jquery.js',
                         'bower_components/bootstrap/dist/js/bootstrap.js',
                         'bower_components/swiper/dist/js/swiper.js',
+                        'bower_components/jquery.transit/jquery.transit.js',
                         'app/**/*.js'
                     ]
                 }

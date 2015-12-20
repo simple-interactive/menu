@@ -1,6 +1,7 @@
 modules.layout = function(){
 
     this.sections = null;
+    this.menuExists = false;
 
     this.init = function () {
 
@@ -15,9 +16,12 @@ modules.layout = function(){
                 $(self.element).on('click', '[data-section]', function(){
 
                     self.initiateMenu();
-                    $(self.element).find('[data-container=main]').html(null);
-                    module.load('section', {section: self.sections[$(this).data('index')]});
 
+                    var index = $(this).data('index');
+
+                    setTimeout(function(){
+                        self.loadSubSection(self.sections[index]);
+                    }, 1);
                 });
             });
         });
@@ -25,42 +29,41 @@ modules.layout = function(){
 
     this.initiateMenu = function(){
 
+        if (self.menuExists) {
+            return;
+        }
+
         self.view.render('layout/view/menu', {sections: self.sections}, function(menu){
-
             $(self.element).find('[data-container-menu]').html(menu);
-
-            $(self.element).on('click', '[data-menu-open]', function(){
-                $(self.element).find('[data-container-menu] .menu').addClass('open');
-
-                $(self.element).find('[data-container-menu] .menu-backdrop').show();
-                $(self.element).find('[data-container-menu] .menu-backdrop').addClass('open');
-            });
-
-            $(self.element).on('click', '[data-menu-close]', function(){
-
-                $(self.element).find('[data-container-menu] .menu').removeClass('open');
-                $(self.element).find('[data-container-menu] .menu-backdrop').removeClass('open');
-
-                setTimeout(function () {
-                    $(self.element).find('[data-container-menu] .menu-backdrop').hide();
-                }, 150)
-            });
-
-            $(self.element).on('click', '[data-main-section]', function(){
-
-                $(self.element).find('[data-container-menu] .menu').removeClass('open');
-                $(self.element).find('[data-container-menu] .menu-backdrop').removeClass('open');
-
-                $(self.element).find('[data-container=main]').html(null);
-                module.load('section', {section: self.sections[$(this).data('index')]});
-
-                setTimeout(function () {
-                    $(self.element).find('[data-container-menu] .menu-backdrop').hide();
-
-                }, 150)
-
-            });
+            self.menuExists = true;
         });
+
+        var $menu = $(self.element).find('[data-container-menu] .menu');
+
+        $(self.element).on('click', '[data-menu-open]', function(){
+            $menu.transition({left:"0px"});
+        });
+
+        $(self.element).on('click', '[data-menu-close]', function(){
+            $menu.transition({left:"-300px"});
+        });
+
+        $(self.element).on('click', '[data-main-section]', function(){
+
+            $menu.transition({left:"-300px"});
+
+            var index = $(this).data('index');
+
+            setTimeout(function(){
+                self.loadSubSection(self.sections[index]);
+            }, 1);
+        });
+    };
+
+    this.loadSubSection = function(section){
+        module.unload('section');
+        module.unload('product');
+        module.load('section', {section: section}, $(self.element).find('[data-container=main]'), true);
     };
 
     var self = this;

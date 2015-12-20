@@ -7,17 +7,18 @@
 .company .logo {
     font-size: 60px;
     font-weight: bold;
-    font-family: "Bookman", Georgia, "Times New Roman", serif;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
     margin-top: 20px;
+    letter-spacing: 1px;
 }
 
 .company .slogan {
-    font-family: "Bookman", Georgia, "Times New Roman", serif;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
     font-size: 20px;
+    letter-spacing: 1px;
 }
 
 .company .line {
-    border: 1px solid red;
     display: block;
     height: 1px;
     border: 0;

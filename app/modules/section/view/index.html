@@ -3,24 +3,33 @@
     <hr class="line" data-stylized="true" data-border-color="background" />
 </div>
 
-<div data-container-menu="true"></div>
-
 <div class="main-menu sub-menu">
 
-    <% if (sections.length > 8) { %>
-        <div data-swiper="true" data-amount="8" data-paging="true">
-    <% } else { %>
-        <div>
-    <% } %>
+    <div class="swiper-container">
 
-        <% for (var i=0; i<sections.length; i++) { %>
+        <div class="swiper-wrapper">
 
-            <div class="item" data-section="true" data-index="<%= i %>">
-                <div class="image" data-stylized="true" data-border-color="background" style="background-image: url(<%= sections[i].image.url %>)"></div>
-                <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
-            </div>
+            <% var index = 0; for (var i=0; i<sections.length; i++) { %>
 
+                <div class="swiper-slide">
+
+                    <% for (var j=0; j<sections[i].length; j++) { %>
+
+                        <div class="item" data-section="true" data-index="<%= index %>">
+                            <div class="image" data-stylized="true" data-border-color="background" style="background-image: url(<%= sections[i][j].image.url %>)"></div>
+                            <div data-stylized="true" data-color="background" class="title"><%= sections[i][j].title %></div>
+                        </div>
+
+                    <% index++; } %>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+        <% if (sections.length > 1) { %>
+            <div class="swiper-pagination"></div>
         <% } %>
     </div>
-
 </div>

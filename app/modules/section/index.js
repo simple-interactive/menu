@@ -4,7 +4,6 @@ modules.section = function(){
     this.sections = null;
 
     this.init = function () {
-
         self.section = self.params.section;
         self.reloadSections();
     };
@@ -20,19 +19,34 @@ modules.section = function(){
 
     this.drawMenu = function(){
 
-        var viewData = {
-            sections: self.sections,
-            section: self.section
+        var temparray = [];
+
+        var swiperOptions = {
+            direction: 'vertical',
+            loop: false,
+            spaceBetween: 50
         };
-        self.view.render('section/view/index', viewData, function(renderedHtml){
+
+        var i,j,chunk = 8;
+        for (i=0,j=self.sections.length; i<j; i+=chunk) {
+            temparray.push(self.sections.slice(i,i+chunk));
+        }
+
+        if (temparray.length > 1) {
+            swiperOptions.pagination = '.swiper-pagination';
+        }
+
+        self.view.render('section/view/index', {sections: temparray, section: self.section}, function(renderedHtml){
+
             $(self.element).html(renderedHtml);
+            new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
         });
 
         $(self.element).on('click', '[data-section]', function(){
 
             self.section = self.sections[$(this).data('index')];
 
-            if (self.section.productsCount) {
+            if (!self.section.productsCount) {
                 self.reloadSections();
             }
             else {

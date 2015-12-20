@@ -7,43 +7,13 @@
 }
 
 [data-container-menu] .menu {
-
-    -webkit-transition: all 0.15s linear;
-    -moz-transition: all 0.15s linear;
-    -o-transition: all 0.15s linear;
-    transition: all 0.15s linear;
-
     position: absolute;
     top: 0;
-    left: -310px;
+    left: -1500px;
     width: 300px;
     height: 100%;
     z-index: 11;
     opacity: 0.8;
-}
-
-[data-container-menu] .menu.open {
-    left: 0px;
-}
-
-.menu-backdrop {
-    -webkit-transition: all 0.15s linear;
-    -moz-transition: all 0.15s linear;
-    -o-transition: all 0.15s linear;
-    transition: all 0.15s linear;
-
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    background-color: red;
-    z-index: 2;
-    opacity: 0;
-}
-
-.menu-backdrop.open {
-    opacity: 0.4;
 }
 
 [data-container-menu] .menu .menu-wrapper {
@@ -52,7 +22,6 @@
     height: 100%;
     overflow: hidden;
 }
-
 
 [data-container-menu] .menu .menu-wrapper .menu-close {
     position: absolute;
@@ -78,6 +47,7 @@
 }
 
 .menu .items .item .image {
+
     width: 120px;
     height: 120px;
     -webkit-filter: invert(0.1);

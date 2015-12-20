@@ -28,24 +28,28 @@ window.module = function () {
         }
     };
 
-    this.load = function (name, params, element) {
+    this.load = function (name, params, element, fill) {
+
+        var container = null;
 
         if (!element) {
 
-            var container = $('body');
+            container = $('body');
 
             if ($('[data-container=main]').size()) {
                 container = $('[data-container=main]');
             }
-
-            container.prepend('<div data-loaded="true" data-module="' + name + '"></div>');
-            element = $('[data-module=' + name + ']').get();
         }
         else {
-            var container = $(element);
-            container.prepend('<div data-loaded="true" data-module="' + name + '"></div>');
-            element = $('[data-module=' + name + ']').get();
+            container = $(element);
         }
+
+        if (fill) {
+            container.html('<div data-loaded="true" data-module="' + name + '"></div>');
+        } else {
+            container.prepend('<div data-loaded="true" data-module="' + name + '"></div>');
+        }
+        element = $('[data-module=' + name + ']').get();
 
         if (!modules[name]) {
             console.log("Trying to load undefined module: '" + name + "'");

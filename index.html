@@ -7,20 +7,26 @@
     <!-- Grunt:Build:CSSSection -->
 
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="bower_components/animate-css/index.css" rel="stylesheet" />
     <link href="bower_components/components-font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="bower_components/swiper/dist/css/swiper.css" rel="stylesheet" />
 
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/cart.css" rel="stylesheet" />
-    <link href="css/footer.css" rel="stylesheet" />
-    <link href="css/company.css" rel="stylesheet" />
-    <link href="css/main-menu.css" rel="stylesheet" />
-    <link href="css/section.css" rel="stylesheet" />
+    <script>
+
+        document.write('<link href="css/style.css?_=' + Date.now() + '" rel="stylesheet" />');
+        document.write('<link href="css/cart.css?_=' + Date.now() + '" rel="stylesheet" />');
+        document.write('<link href="css/footer.css?_=' + Date.now() + '" rel="stylesheet" />');
+        document.write('<link href="css/company.css?_=' + Date.now() + '" rel="stylesheet" />');
+        document.write('<link href="css/main-menu.css?_=' + Date.now() + '" rel="stylesheet" />');
+        document.write('<link href="css/section.css?_=' + Date.now() + '" rel="stylesheet" />');
+        document.write('<link href="css/product.css?_=' + Date.now() + '" rel="stylesheet" />');
+
+    </script>
 
     <!-- Grunt:Build:CSSSection -->
 
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=2" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
     <link rel="icon" href="images/favicon.png">
 
 </head>
@@ -31,7 +37,7 @@
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/swiper/dist/js/swiper.js"></script>
-
+<script src="bower_components/jquery.transit/jquery.transit.js"></script>
 
 <script src="app/core/view/view.js"></script>
 <script src="app/core/view/plugins/date.js"></script>
@@ -47,7 +53,7 @@
 <script src="app/core/storage/adapters/cookie.js"></script>
 <script src="app/core/storage/storage.js"></script>
 <script src="app/core/dispatcher.js"></script>
-<script src="app/core/module/module.js"></script>
+<script src="app/core/module/module.js?_=23423xvsdf"></script>
 <script src="app/core/router.js"></script>
 
 <script src="app/services/api.js"></script>
@@ -65,8 +71,9 @@
 <script src="app/modules/section/index.js"></script>
 <script type="application/xhtml+xml" data-view="section/view/index" data-src="app/modules/section/view/index.html"></script>
 
-<script src="app/modules/products/index.js"></script>
-<script type="application/xhtml+xml" data-view="products/view/index" data-src="app/modules/products/view/view.html"></script>
+<script src="app/modules/product/index.js"></script>
+<script type="application/xhtml+xml" data-view="product/view/index" data-src="app/modules/product/view/index.html"></script>
+<script type="application/xhtml+xml" data-view="product/view/details" data-src="app/modules/product/view/details.html"></script>
 
 <!-- Grunt:Build:JSSection -->
 
@@ -74,7 +81,7 @@
 
 <script>
     var config = {
-        endpoint: 'http://192.168.0.113:82',
+        endpoint: 'http://192.168.1.103:82',
         token: '27c2f4bb1748ae677a4bf6c160122ed4'
     };
 </script>

@@ -1,5 +1,7 @@
 window.services.api = function(){
 
+    this.cache = [];
+
     /**
      * @type {{endpoint: (config.endpoint|string)}}
      */
@@ -112,25 +114,11 @@ window.services.api = function(){
             return;
         }
 
-        var cacheKey = {
-            endpoint: endpoint,
-            data: data
-        };
+        var cacheKey = endpoint+JSON.stringify(data);
 
-        cacheKey = Base64.encode(JSON.stringify(cacheKey));
-
-        if (cacheData = storage.getItem(cacheKey)) {
-
-            var cachedData = JSON.parse(Base64.decode(cacheData));
-
-            // 10 minutes cache
-            if (Date.now() - cachedData.time > 600000) {
-                storage.removeItem(cacheKey);
-            }
-            else {
-                callback(cachedData);
-                return;
-            }
+        if (cacheData = self.cache[cacheKey]) {
+            callback(cacheData);
+            return;
         }
 
         $.ajax({
@@ -157,10 +145,7 @@ window.services.api = function(){
                 } catch (err) {}
 
                 if (response.status == 200) {
-                    var response = parsedResponse;
-                    response.time = Date.now();
-
-                    storage.setItem(cacheKey, Base64.encode(JSON.stringify(response)));
+                    self.cache[cacheKey] = parsedResponse;
                     callback(parsedResponse);
                 }
                 else if (response.status == 400 && failCallback) {

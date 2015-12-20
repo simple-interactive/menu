@@ -1,0 +1,48 @@
+<div class="section-header">
+    <div class="logo" data-stylized="true" data-color="background"><%= section.title %></div>
+    <hr class="line" data-stylized="true" data-border-color="background" />
+</div>
+
+<div class="products sub-menu">
+
+    <div class="swiper-container">
+
+        <div class="swiper-wrapper">
+
+            <%  var index = 0; for (var i=0; i<products.length; i++) { %>
+
+            <div class="swiper-slide">
+
+                <% for (var j=0; j<products[i].length; j++) { %>
+
+                <div class="item" data-product="true" data-index="<%= index %>">
+
+                    <div class="image" data-stylized="true" data-border-color="background" style="background-image: url(<%= products[i][j].images[0].url %>)">
+
+                        <div class="plus" data-index="<%= index %>" data-plus="true" data-stylized="true" data-color="background" data-background-color="brand"><span class="fa fa-plus"></span></div>
+
+                        <div class="block">
+                            <div class="backdrop" data-stylized="true" data-background-color="foreground"></div>
+                            <div class="price" data-stylized="true" data-color="brand"><%= products[i][j].price %> грн</div>
+                            <div class="weight" data-stylized="true" data-color="background"><%= products[i][j].weight %> мл</div>
+                        </div>
+
+                    </div>
+
+                    <div data-stylized="true" data-color="background" class="title"><%= products[i][j].title %></div>
+
+                </div>
+
+                <% index++; } %>
+
+            </div>
+
+            <% } %>
+
+        </div>
+
+        <% if (products.length > 1) { %>
+        <div class="swiper-pagination"></div>
+        <% } %>
+    </div>
+</div>

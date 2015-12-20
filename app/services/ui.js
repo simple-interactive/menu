@@ -1,7 +1,6 @@
 window.services.ui = function(){
 
     this.init = function () {
-        this.initiateAnimated();
         this.swiper();
     };
 
@@ -28,7 +27,6 @@ window.services.ui = function(){
             }
 
             var options = {
-                // Optional parameters
                 direction: 'vertical',
                 loop: false,
                 spaceBetween: 50
@@ -46,14 +44,14 @@ window.services.ui = function(){
 
     this.listen = function (selector, callback) {
 
-        function processElement (element) {
+        function processElement(element){
             if (!$(element).data('processed')) {
                 $(element).data('processed', true);
                 callback(element);
             }
         }
 
-        $(document).bind('DOMNodeInserted', function(e) {
+        $(document).bind('DOMNodeInserted', function(e){
             if ($(e.target).is(selector)) {
                 processElement(e.target);
             }
@@ -65,24 +63,6 @@ window.services.ui = function(){
         if ($(selector).size()) {
             processElement($(selector).get());
         }
-    };
-
-    this.initiateAnimated = function(){
-
-        (function($) {
-
-            $.fn.animate = function (type) {
-
-                this.removeClass(type);
-                var self = this;
-
-                setTimeout(function () {
-                    self.addClass('animated');
-                    self.addClass(type);
-                }, 1);
-            };
-
-        })(jQuery);
     };
 
     var self = this;
