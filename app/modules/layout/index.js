@@ -61,9 +61,16 @@ modules.layout = function(){
     };
 
     this.loadSubSection = function(section){
+
         module.unload('section');
         module.unload('product');
-        module.load('section', {section: section}, $(self.element).find('[data-container=main]'), true);
+
+        if (section.productsCount) {
+            module.load('product', {section: section});
+        }
+        else {
+            module.load('section', {section: section}, $(self.element).find('[data-container=main]'), true);
+        }
     };
 
     var self = this;
