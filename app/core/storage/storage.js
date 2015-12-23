@@ -41,7 +41,10 @@ window.storage = new (function () {
 
     var self = this;
 
-    if (!this.test()) {
+    if (isApp) {
+        this.adapter = cordovaStorage;
+    }
+    else if (!this.test()) {
         this.adapter = cookie;
     }
 

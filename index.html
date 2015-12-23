@@ -4,6 +4,9 @@
 
     <base href="/">
 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
     <!-- Grunt:Build:CSSSection -->
 
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
@@ -24,10 +27,9 @@
 
     <!-- Grunt:Build:CSSSection -->
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
-
-    <link rel="icon" href="images/favicon.png">
+    <script>
+        var isApp = true;
+    </script>
 
 </head>
 <body>
@@ -50,8 +52,12 @@
 <script type="application/xhtml+xml" data-view="view/plugins/dialog/dialog" data-src="app/core/view/plugins/dialog/dialog.html"></script>
 
 <script src="app/core/base64.js"></script>
+
 <script src="app/core/storage/adapters/cookie.js"></script>
+<script src="app/core/storage/adapters/cordova.js"></script>
+
 <script src="app/core/storage/storage.js"></script>
+
 <script src="app/core/dispatcher.js"></script>
 <script src="app/core/module/module.js"></script>
 <script src="app/core/router.js"></script>
@@ -81,7 +87,7 @@
 
 <script>
     var config = {
-        endpoint: 'http://192.168.1.103:82',
+        endpoint: 'http://simple.backend',
         token: '27c2f4bb1748ae677a4bf6c160122ed4'
     };
 </script>
