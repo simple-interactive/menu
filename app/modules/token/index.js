@@ -31,8 +31,11 @@ modules.token = function (){
                         $(self.element).find('.modal').modal('hide');
                     },
                     function(response){
+
                         $submit.removeAttr('disabled').removeClass('loading');
                         $inputs.removeAttr('disabled');
+
+                        $inputs.transition({ scale: 1.2 }).transition({ scale: 1 });
                     }
                 );
             });
