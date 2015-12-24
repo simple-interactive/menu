@@ -10,6 +10,61 @@ window.services.api = function(){
         token: config.token
     };
 
+    /**
+     * Pairs tablet with md-backend
+     *
+     * @param {String} token
+     * @param {Function} successCallback
+     * @param {Function} failCallback
+     */
+    this.pair = function(token, successCallback, failCallback){
+
+        $.ajax({
+            url: [self.config.endpoint, 'pair'].join('/'),
+            data: {token: token},
+            type: 'post',
+            complete: function (response) {
+
+                try {
+                    var parsedResponse = JSON.parse(response.responseText);
+                } catch (err) {}
+
+                if (response.status == 200) {
+                    successCallback(parsedResponse);
+                }
+                else {
+                    failCallback();
+                }
+            }
+        });
+    };
+
+    /**
+     *
+     * @param {String} token
+     * @param {Function} successCallback
+     * @param {Function} failCallback
+     */
+    this.pairCheck = function(token, successCallback, failCallback){
+        $.ajax({
+            url: [self.config.endpoint, 'pair', 'check'].join('/'),
+            data: {token: token},
+            type: 'post',
+            complete: function (response) {
+                try {
+                    var parsedResponse = JSON.parse(response.responseText);
+                } catch (err) {}
+
+                if (response.status == 200) {
+                    successCallback(parsedResponse);
+                }
+                else {
+                    failCallback();
+                }
+            }
+        });
+    };
+
     /****************************** SECTION *******************************/
     /**
      * Returns section list by provided parent section ID

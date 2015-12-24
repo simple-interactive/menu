@@ -42,21 +42,10 @@ modules.product = function(){
                 $(self.element).on('click', '[data-product]', function(){});
 
                 $(self.element).on('click', '[data-plus]', function(){
-                    self.productDetails(self.products[$(this).data('index')]);
+                    module.load('productDetails', {product: self.products[$(this).data('index')]});
                     return false;
                 });
             });
-        });
-    };
-
-    this.productDetails = function(product){
-        self.view.render('product/view/details', {product: product}, function(tpl){
-            $('body').append(tpl);
-            $('[data-product-details]')
-                .modal({backdrop: false})
-                .on('hidden.bs.modal', function(){
-                    $(this).remove();
-                });
         });
     };
 

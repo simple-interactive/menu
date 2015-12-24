@@ -15,6 +15,7 @@
 
     <script>
 
+        document.write('<link href="css/token.css?_=' + Date.now() + '" rel="stylesheet" />');
         document.write('<link href="css/style.css?_=' + Date.now() + '" rel="stylesheet" />');
         document.write('<link href="css/cart.css?_=' + Date.now() + '" rel="stylesheet" />');
         document.write('<link href="css/footer.css?_=' + Date.now() + '" rel="stylesheet" />');
@@ -64,8 +65,12 @@
 
 <script src="app/services/api.js"></script>
 <script src="app/services/ui.js"></script>
+<script src="app/services/shopping-cart.js"></script>
 
 <script src="app/bootstrap.js"></script>
+
+<script src="app/modules/token/index.js"></script>
+<script type="application/xhtml+xml" data-view="token/view/index" data-src="app/modules/token/view/index.html"></script>
 
 <script src="app/modules/layout/index.js"></script>
 <script type="application/xhtml+xml" data-view="layout/view/index" data-src="app/modules/layout/view/index.html"></script>
@@ -76,6 +81,7 @@
 <script type="application/xhtml+xml" data-view="section/view/index" data-src="app/modules/section/view/index.html"></script>
 
 <script src="app/modules/product/index.js"></script>
+<script src="app/modules/product/details.js"></script>
 <script type="application/xhtml+xml" data-view="product/view/index" data-src="app/modules/product/view/index.html"></script>
 <script type="application/xhtml+xml" data-view="product/view/details" data-src="app/modules/product/view/details.html"></script>
 
@@ -85,8 +91,7 @@
 
 <script>
     var config = {
-        endpoint: 'http://simple.backend',
-        token: '27c2f4bb1748ae677a4bf6c160122ed4'
+        endpoint: 'http://simple.backend'
     };
 </script>
 
