@@ -1,5 +1,7 @@
 window.services.ui = function(){
 
+    this.styles = null;
+
     this.init = function () {
         this.swiper();
     };

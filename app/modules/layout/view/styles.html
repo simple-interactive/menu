@@ -35,7 +35,7 @@
         color: <%= colors.background %>;
     }
 
-    .background-image {
+    [data-module=layout] > .background-image {
         background-image: url(<%= backgroundImage.url %>);
     }
 
@@ -45,6 +45,10 @@
 
     .swiper-pagination-bullet.swiper-pagination-bullet-active {
         background-color: <%= colors.brand %>;
+    }
+
+    .company > [data-logo] {
+        background-image: url(<%= company.logo.url %>);;
     }
 
 </style>

@@ -1,7 +1,6 @@
 $(function(){
-    window.dispatcher.postDispatch = function () {
-        window.services.ui.init();
+    dispatcher.postDispatch = function () {
+        services.ui.init();
         module.load('layout');
-        module.load('stylize', {}, 'body');
     };
 });

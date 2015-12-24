@@ -1,5 +1,8 @@
 modules.layout = function(){
 
+    this.style = null;
+    this.interval = null;
+
     this.sections = null;
     this.menuExists = false;
 
@@ -13,6 +16,8 @@ modules.layout = function(){
 
                 $(self.element).html(tpl);
 
+                self.updateStyles();
+
                 $(self.element).on('click', '[data-section]', function(){
 
                     self.initiateMenu();
@@ -24,6 +29,22 @@ modules.layout = function(){
                     }, 1);
                 });
             });
+        });
+
+        self.interval = setInterval(self.updateStyles, 20000);
+    };
+
+    this.updateStyles = function(){
+
+        services.api.getStyles(function(styles){
+
+            self.style = styles.style;
+
+            self.view.render('layout/view/styles', self.style, function(tpl){
+                $(self.element).find('[data-styles]').html(tpl);
+            });
+
+            $(self.element).find('[data-slogan]').html(self.style.company.slogan);
         });
     };
 
