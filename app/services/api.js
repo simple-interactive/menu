@@ -84,19 +84,14 @@ window.services.api = function(){
 
     /**************************** END PRODUCT *****************************/
 
-
-   this.getStyles = function(callback){
-       callback({
-           styles : {
-               brand: 'rgba(196, 8, 31, 0.7)',
-               foreground: 'black',
-               background: 'white'
-           },
-           background: {
-               url: "http://interestingukraine.kiev.ua/wp-content/uploads/2013/11/restoran-sutra.jpg"
-           }
-       });
-   };
+    /**
+     * Gets styles for menu
+     *
+     * @param {Function} callback
+     */
+    this.getStyles = function(callback){
+        self.call('get', 'style', {_: Math.random()}, callback);
+    };
 
     /**
      * Send request to an api

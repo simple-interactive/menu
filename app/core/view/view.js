@@ -28,13 +28,18 @@ window.view = function() {
                 data = {};
             }
 
-            data.plugins = window.view.plugins;
-
-            if (!callback) {
-                return (new Function("obj", templateCode))(data);
+            var copy = data.constructor();
+            for (var attr in data) {
+                if (data.hasOwnProperty(attr)) copy[attr] = data[attr];
             }
 
-            callback((new Function("obj", templateCode))(data));
+            copy.plugins = window.view.plugins;
+
+            if (!callback) {
+                return (new Function("obj", templateCode))(copy);
+            }
+
+            callback((new Function("obj", templateCode))(copy));
         };
 
     })();
