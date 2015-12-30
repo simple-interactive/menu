@@ -13,8 +13,8 @@ modules.token = function (){
                     self.unload();
                 });
 
-            $(self.element).find('[data-config]').on('change', function(){
-                self.config[$(this).data('config')] = $(this).val();
+            $(self.element).find('[data-token]').on('change', function(){
+                self.token = $(this).val();
             });
 
             $(self.element).find('[data-connect]').on('click', function(){

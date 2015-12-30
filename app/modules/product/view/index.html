@@ -1,4 +1,4 @@
-<div class="section-header">
+<div class="section-header animated fadeInDown" data-product-header="true">
     <div class="logo" data-stylized="true" data-color="background"><%= section.title %></div>
     <hr class="line" data-stylized="true" data-border-color="background" />
 </div>
@@ -15,7 +15,7 @@
 
                 <% for (var j=0; j<products[i].length; j++) { %>
 
-                <div class="item" data-product="true" data-index="<%= index %>">
+                <div class="item animated fadeInUp" data-product="true" data-index="<%= index %>">
 
                     <div class="image" data-stylized="true" data-border-color="background" style="background-image: url(<%= products[i][j].images[0].url %>)">
 

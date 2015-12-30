@@ -5,6 +5,7 @@
     "bootstrap": "latest",
     "components-font-awesome": "*",
     "swiper": "*",
-    "jquery.transit": "*"
+    "jquery.transit": "*",
+    "animatecss": "https://github.com/daneden/animate.css.git"
   }
 }

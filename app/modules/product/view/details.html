@@ -2,64 +2,6 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body" data-stylized="true" data-border-color="brand">
-
-                <div class="close" data-dismiss="modal" data-stylized="true" data-color="brand"><span class="fa fa-close"></span></div>
-
-                <div class="image" style="background-image: url(<%= product.images[0].url %>);"></div>
-
-                <div class="table" data-stylized="true" data-color="foreground">
-                    <div class="row">
-                        <div class="title"><%= product.title %></div>
-                        <div class="price-per-one" data-price-one="true"><%= parseFloat(product.price) %> грн.</div>
-                        <div class="minus">
-                            <span class="fa fa-minus-circle" data-stylized="true" data-color="brand"></span>
-                        </div>
-                        <div class="amount"><span data-amount="true">1</span>&nbsp;шт.</div>
-                        <div class="plus">
-                            <span class="fa fa-plus-circle" data-stylized="true" data-color="brand"></span>
-                        </div>
-                        <div class="price-total"><span data-price-total="true"><%= product.price %></span> грн.</div>
-                    </div>
-                </div>
-
-                <hr data-stylized="true" data-border-color="foreground" />
-
-                <% if (product.options.length) { %>
-
-                    <div class="line">Добавить:</div>
-
-                    <% for (var i=0; i<product.options.length; i++) { %>
-
-                        <div class="table options" data-stylized="true" data-color="foreground">
-                            <div class="row" data-option="true">
-                                <div class="title"><%= product.options[i].title %></div>
-                                <div class="price-per-one" data-price-one="true"><%= parseFloat(product.options[i].price) %> грн.</div>
-                                <div class="minus">
-                                    <span class="fa fa-minus-circle" data-stylized="true" data-color="brand"></span>
-                                </div>
-                                <div class="amount"><span data-amount="true">1</span>&nbsp;шт.</div>
-                                <div class="plus">
-                                    <span class="fa fa-plus-circle" data-stylized="true" data-color="brand"></span>
-                                </div>
-                                <div class="price-total"><span data-price-total="true"><%= product.options[i].price %></span> грн.</div>
-                            </div>
-                        </div>
-
-                    <% } %>
-
-                <% } %>
-
-                <hr class="cart-footer" data-stylized="true" data-border-color="foreground" />
-
-                <div class="table total" data-stylized="true" data-color="foreground">
-                    <div class="row">
-                        <div class="title">Итого:</div>
-                        <div class="price-total"><span data-price-total="true"><%= product.price %></span> грн.</div>
-                    </div>
-                </div>
-
-                <input type="button" data-add-to-cart="true" class="button" data-stylized="true" data-background-color="brand" data-color="background" value="В корзину">
-
             </div>
         </div>
     </div>

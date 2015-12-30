@@ -16,6 +16,9 @@ modules.layout = function(){
 
                 $(self.element).html(tpl);
 
+                services.shoppingCart.setShoppingCartCallback(self.shoppingCartUpdated);
+                self.shoppingCartUpdated();
+
                 self.updateStyles();
 
                 $(self.element).on('click', '[data-section]', function(){
@@ -60,18 +63,26 @@ modules.layout = function(){
         });
 
         var $menu = $(self.element).find('[data-container-menu] .menu');
+        var $menuBackdrop = $(self.element).find('[data-container-menu] .menu-backdrop');
 
         $(self.element).on('click', '[data-menu-open]', function(){
+
+            $menuBackdrop.show();
+            $menuBackdrop.animate({opacity: 0.6}, config.animation.duration);
+
             $menu.transition({left:"0px"});
         });
 
         $(self.element).on('click', '[data-menu-close]', function(){
             $menu.transition({left:"-300px"});
+            $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
+                $(this).hide();
+            });
         });
 
         $(self.element).on('click', '[data-main-section]', function(){
 
-            $menu.transition({left:"-300px"});
+            $(self.element).find('[data-menu-close]').click();
 
             var index = $(this).data('index');
 
@@ -81,17 +92,69 @@ modules.layout = function(){
         });
     };
 
+    this.shoppingCartUpdated = function(orders){
+
+        orders = orders || {
+            orders: [],
+            price: 0,
+            amount: 0
+        };
+
+        self.view.render('layout/view/cart', orders, function(tpl){
+            $(self.element).find('[data-cart-holder]').html(tpl);
+        });
+    };
+
     this.loadSubSection = function(section){
 
-        module.unload('section');
-        module.unload('product');
+        $(self.element).find('[data-section]')
+            .removeClass('fadeInUp')
+            .addClass('fadeOutDown');
 
-        if (section.productsCount) {
-            module.load('product', {section: section});
+        $(self.element).find('[data-company]')
+            .removeClass('fadeInDown')
+            .addClass('fadeOutUp');
+
+        if ($(self.element).find('[data-section-header]').size()) {
+
+            $(self.element).find('[data-section-header]')
+                .removeClass('fadeInDown')
+                .addClass('fadeOutUp');
         }
-        else {
-            module.load('section', {section: section}, $(self.element).find('[data-container=main]'), true);
+
+        if ($(self.element).find('[data-sub-section]').size()) {
+
+            $(self.element).find('[data-sub-section]')
+                .removeClass('fadeInUp')
+                .addClass('fadeOutDown');
         }
+
+        if ($(self.element).find('[data-product-header]').size()) {
+
+            $(self.element).find('[data-product-header]')
+                .removeClass('fadeInDown')
+                .addClass('fadeOutUp');
+        }
+
+        if ($(self.element).find('[data-product]')) {
+            $(self.element).find('[data-product]')
+                .removeClass('fadeInUp')
+                .addClass('fadeOutDown');
+        }
+
+        setTimeout(function(){
+
+            module.unload('section');
+            module.unload('product');
+
+            if (section.productsCount) {
+                module.load('product', {section: section});
+            }
+            else {
+                module.load('section', {section: section}, $(self.element).find('[data-container=main]'), true);
+            }
+
+        }, config.animation.duration);
     };
 
     var self = this;

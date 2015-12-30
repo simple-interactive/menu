@@ -12,6 +12,7 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="bower_components/components-font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="bower_components/swiper/dist/css/swiper.css" rel="stylesheet" />
+    <link href="bower_components/animatecss/animate.css" rel="stylesheet" />
 
     <script>
 
@@ -76,6 +77,7 @@
 <script type="application/xhtml+xml" data-view="layout/view/index" data-src="app/modules/layout/view/index.html"></script>
 <script type="application/xhtml+xml" data-view="layout/view/menu" data-src="app/modules/layout/view/menu.html"></script>
 <script type="application/xhtml+xml" data-view="layout/view/styles" data-src="app/modules/layout/view/styles.html"></script>
+<script type="application/xhtml+xml" data-view="layout/view/cart" data-src="app/modules/layout/view/cart.html"></script>
 
 <script src="app/modules/section/index.js"></script>
 <script type="application/xhtml+xml" data-view="section/view/index" data-src="app/modules/section/view/index.html"></script>
@@ -84,6 +86,7 @@
 <script src="app/modules/product/details.js"></script>
 <script type="application/xhtml+xml" data-view="product/view/index" data-src="app/modules/product/view/index.html"></script>
 <script type="application/xhtml+xml" data-view="product/view/details" data-src="app/modules/product/view/details.html"></script>
+<script type="application/xhtml+xml" data-view="product/view/details-content" data-src="app/modules/product/view/details-content.html"></script>
 
 <!-- Grunt:Build:JSSection -->
 
@@ -91,7 +94,11 @@
 
 <script>
     var config = {
-        endpoint: 'http://simple.backend'
+        endpoint: 'http://185.70.109.10:81',
+        token: "",
+        animation: {
+            duration: 350
+        }
     };
 </script>
 

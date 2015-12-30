@@ -1,23 +1,26 @@
-window.modules = {};
-window.services = {};
+modules = {};
+services = {};
 
-window.dispatcher = new (function () {
+dispatcher = new (function () {
 
     this.dispatch = function () {
 
-        self.preDispatch();
+        this.preDispatch();
 
-        window.module = new window.module();
-        window.module.init();
+        module = new module();
+        module.init();
 
-        for (var service in window.services) {
-            window.services[service] = new window.services[service]();
+        self.moduleLoaded();
+
+        for (var service in services) {
+            services[service] = new services[service]();
         }
 
         self.postDispatch();
     };
 
     this.preDispatch = function () {};
+    this.moduleLoaded = function () {};
     this.postDispatch = function () {};
 
     var self = this;

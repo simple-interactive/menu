@@ -4,6 +4,8 @@
     <span data-stylized="true" data-color="brand" class="fa fa-bars"></span>
 </div>
 
+<div class="menu-backdrop" data-stylized="true" data-background-color="foreground" data-menu-close="true"></div>
+
 <div class="menu" data-stylized="true" data-background-color="foreground">
 
     <div class="menu-wrapper">
@@ -16,7 +18,7 @@
 
             <% for (var i=0; i<sections.length; i++) { %>
 
-                <div class="item" data-main-section="true" data-index="<%= i %>">
+                <div class="item animated fadeInLeft" data-main-section="true" data-index="<%= i %>">
                     <div class="image" style="background-image: url(<%= sections[i].image.url %>)"></div>
                     <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
                 </div>

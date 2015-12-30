@@ -42,18 +42,33 @@ modules.section = function(){
             new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
         });
 
-        $(self.element).on('click', '[data-section]', function(){
+        $(self.element).on('click', '[data-sub-section]', function(){
 
-            self.section = self.sections[$(this).data('index')];
+            $(self.element).find('[data-section-header]')
+                .removeClass('fadeInDown')
+                .addClass('fadeOutUp');
 
-            if (!self.section.productsCount) {
-                self.reloadSections();
-            }
-            else {
-                var section = self.section;
-                module.unload('section');
-                module.load('product', {section: section});
-            }
+            $(self.element).find('[data-sub-section]')
+                .removeClass('fadeInUp')
+                .addClass('fadeOutDown');
+
+            var index = $(this).data('index');
+
+            setTimeout(function(){
+
+                self.section = self.sections[index];
+
+                if (!self.section.productsCount) {
+                    self.reloadSections();
+                }
+                else {
+                    var section = self.section;
+                    module.unload('section');
+                    module.load('product', {section: section});
+                }
+
+            }, config.animation.duration);
+
         });
     };
 
