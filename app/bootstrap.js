@@ -11,8 +11,6 @@ $(function(){
             module.load('layout');
         };
 
-        this.initApp('cdd8c72ac04bc21d79827d263ceee153');
-/*
         services.ui.init();
 
         config.token = storage.getItem('token');
@@ -25,7 +23,7 @@ $(function(){
                 module.load('token', {callback: self.initApp});
             }
         );
-        */
+        
 
         var self = this;
     };

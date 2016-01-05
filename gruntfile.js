@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
     var config = {
         prod : {
-            endpoint: 'http://185.70.109.10:81',
+            endpoint: 'http://185.70.109.10:85',
             token: '',
             animation: {
                 duration: 350
