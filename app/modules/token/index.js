@@ -17,7 +17,7 @@ modules.token = function (){
                 self.token = $(this).val();
             });
 
-            $(self.element).find('[data-connect]').on('click', function(){
+            $(self.element).find('[data-connect]').on('touchstart', function(){
 
                 var $submit = $(this);
                 var $inputs = $(self.element).find('input');

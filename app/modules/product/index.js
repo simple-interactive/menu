@@ -39,9 +39,9 @@ modules.product = function(){
 
                 new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
 
-                $(self.element).on('click', '[data-product]', function(){});
+                $(self.element).on('touchstart', '[data-product]', function(){});
 
-                $(self.element).on('click', '[data-plus]', function(){
+                $(self.element).on('touchstart', '[data-plus]', function(){
                     module.load('productDetails', {product: self.products[$(this).data('index')]});
                     return false;
                 });

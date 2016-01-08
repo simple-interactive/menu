@@ -49,7 +49,7 @@ modules.section = function(){
             self.showUi();
         });
 
-        $(self.element).on('click', '[data-sub-section]', function(){
+        $(self.element).on('touchstart', '[data-sub-section]', function(){
 
             $(self.element).find('[data-section-header]').transition({opacity: 0, y: -200});
             $(self.element).find('[data-sub-section]').transition({opacity: 0, y: 200});
