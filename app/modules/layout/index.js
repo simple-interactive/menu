@@ -81,16 +81,16 @@ modules.layout = function(){
 
         $(self.element).on('click', '[data-menu-close]', function(){
             $menu.transition({x:-300});
-            $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
-                $(this).hide();
-            });
+            $menuBackdrop.transition({opacity:0});
+            setTimeout(function(){
+                $menuBackdrop.hide();
+            }, config.animation.duration)
         });
 
         $(self.element).on('click', '[data-main-section]', function(){
 
-            // $menu.css({left: -300});
             $menu.transition({x:-300});
-            //$menuBackdrop.hide();
+
             $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
                 $(this).hide();
             });
