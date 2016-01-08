@@ -17,6 +17,11 @@ modules.section = function(){
         });
     };
 
+    this.showUi = function(){
+        $(self.element).find('[data-sub-section]').transition({opacity: 1});
+        $(self.element).find('[data-section-header]').transition({opacity: 1});
+    };
+
     this.drawMenu = function(){
 
         var temparray = [];
@@ -40,17 +45,14 @@ modules.section = function(){
 
             $(self.element).html(renderedHtml);
             new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
+
+            self.showUi();
         });
 
         $(self.element).on('click', '[data-sub-section]', function(){
 
-            $(self.element).find('[data-section-header]')
-                .removeClass('fadeInDown')
-                .addClass('fadeOutUp');
-
-            $(self.element).find('[data-sub-section]')
-                .removeClass('fadeInUp')
-                .addClass('fadeOutDown');
+            $(self.element).find('[data-section-header]').transition({opacity: 0, y: -200});
+            $(self.element).find('[data-sub-section]').transition({opacity: 0, y: 200});
 
             var index = $(this).data('index');
 

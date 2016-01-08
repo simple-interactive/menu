@@ -20,6 +20,7 @@ modules.layout = function(){
                 self.shoppingCartUpdated();
 
                 self.updateStyles();
+                self.showUi();
 
                 $(self.element).on('click', '[data-section]', function(){
 
@@ -35,6 +36,11 @@ modules.layout = function(){
         });
 
         self.interval = setInterval(self.updateStyles, 20000);
+    };
+
+    this.showUi = function(){
+        $(self.element).find('[data-section]').transition({opacity: 1});
+        $(self.element).find('[data-company]').transition({opacity: 1});
     };
 
     this.updateStyles = function(){
@@ -68,7 +74,7 @@ modules.layout = function(){
         $(self.element).on('click', '[data-menu-open]', function(){
 
             $menuBackdrop.show();
-            $menuBackdrop.animate({opacity: 0.6}, config.animation.duration);
+            $menuBackdrop.transition({opacity: 0.6});
 
             $menu.transition({left:"0px"});
         });
@@ -107,40 +113,14 @@ modules.layout = function(){
 
     this.loadSubSection = function(section){
 
-        $(self.element).find('[data-section]')
-            .removeClass('fadeInUp')
-            .addClass('fadeOutDown');
+        $(self.element).find('[data-section]').transition({opacity: 0, y: 200});
+        $(self.element).find('[data-company]').transition({opacity: 0, y: -200});
 
-        $(self.element).find('[data-company]')
-            .removeClass('fadeInDown')
-            .addClass('fadeOutUp');
+        $(self.element).find('[data-section-header]').transition({opacity: 0, y: -200});
+        $(self.element).find('[data-sub-section]').transition({opacity: 0, y: 200});
 
-        if ($(self.element).find('[data-section-header]').size()) {
-
-            $(self.element).find('[data-section-header]')
-                .removeClass('fadeInDown')
-                .addClass('fadeOutUp');
-        }
-
-        if ($(self.element).find('[data-sub-section]').size()) {
-
-            $(self.element).find('[data-sub-section]')
-                .removeClass('fadeInUp')
-                .addClass('fadeOutDown');
-        }
-
-        if ($(self.element).find('[data-product-header]').size()) {
-
-            $(self.element).find('[data-product-header]')
-                .removeClass('fadeInDown')
-                .addClass('fadeOutUp');
-        }
-
-        if ($(self.element).find('[data-product]')) {
-            $(self.element).find('[data-product]')
-                .removeClass('fadeInUp')
-                .addClass('fadeOutDown');
-        }
+        $(self.element).find('[data-product-header]').transition({opacity: 0, y: -200});
+        $(self.element).find('[data-product]').transition({opacity: 0, y: 200});
 
         setTimeout(function(){
 
@@ -153,8 +133,7 @@ modules.layout = function(){
             else {
                 module.load('section', {section: section}, $(self.element).find('[data-container=main]'), true);
             }
-
-        }, config.animation.duration);
+        }, config.animation.duration)
     };
 
     var self = this;

@@ -8,7 +8,7 @@
 
 <div data-container="main">
 
-    <div class="company animated fadeInDown" data-company="true">
+    <div class="company" data-company="true">
         <div class="logo" data-logo="true"></div>
         <hr class="line" data-stylized="true" data-border-color="brand" />
         <div class="slogan" data-slogan="true" data-stylized="true" data-color="background"></div>
@@ -18,7 +18,7 @@
 
         <% for (var i=0; i<sections.length; i++) { %>
 
-        <div class="item animated fadeInUp" data-section="true" data-index="<%= i %>">
+        <div class="item" data-section="true" data-index="<%= i %>">
             <div class="image" data-stylized="true" data-border-color="background" style="background-image: url(<%= sections[i].image.url %>)"></div>
             <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
         </div>

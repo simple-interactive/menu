@@ -20,3 +20,13 @@ html {
     -ms-touch-action: manipulation;
     touch-action: manipulation;
 }
+
+[data-section],
+[data-company],
+[data-product],
+[data-sub-section],
+[data-section-header],
+[data-product-header]
+{
+    opacity: 0;
+}

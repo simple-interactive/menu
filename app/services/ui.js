@@ -4,6 +4,8 @@ window.services.ui = function(){
 
     this.init = function () {
         this.swiper();
+
+        $.fx.speeds._default = config.animation.duration;
     };
 
     this.swiper = function(){

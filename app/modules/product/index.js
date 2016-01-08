@@ -45,8 +45,15 @@ modules.product = function(){
                     module.load('productDetails', {product: self.products[$(this).data('index')]});
                     return false;
                 });
+
+                self.showUi();
             });
         });
+    };
+
+    this.showUi = function(){
+        $(self.element).find('[data-product-header]').transition({opacity: 1});
+        $(self.element).find('[data-product]').transition({opacity: 1});
     };
 
     this.unload = function(){
