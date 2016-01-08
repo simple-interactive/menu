@@ -88,7 +88,7 @@ modules.layout = function(){
 
         $(self.element).on('click', '[data-main-section]', function(){
 
-            $menu.transition({left:"-300px"});
+            // $menu.transition({left:"-300px"});
             //$menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
             //    $(this).hide();
             //});
