@@ -76,11 +76,11 @@ modules.layout = function(){
             $menuBackdrop.show();
             $menuBackdrop.transition({opacity: 0.6});
 
-            $menu.transition({left:"0px"});
+            $menu.transition({x:0});
         });
 
         $(self.element).on('click', '[data-menu-close]', function(){
-            $menu.transition({left:"-300px"});
+            $menu.transition({x:-300});
             $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
                 $(this).hide();
             });
@@ -88,11 +88,13 @@ modules.layout = function(){
 
         $(self.element).on('click', '[data-main-section]', function(){
 
-            $menu.transition({left:"-300px"});
+            // $menu.css({left: -300});
+            $menu.transition({x:-300});
+            $menuBackdrop.hide();
             $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
                 $(this).hide();
             });
-            
+
             self.loadSubSection(self.sections[$(this).data('index')]);
         });
     };
