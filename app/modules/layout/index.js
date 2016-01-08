@@ -88,16 +88,12 @@ modules.layout = function(){
 
         $(self.element).on('click', '[data-main-section]', function(){
 
-            // $menu.transition({left:"-300px"});
-            //$menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
-            //    $(this).hide();
-            //});
-
-            var index = $(this).data('index');
-
-            setTimeout(function(){
-                self.loadSubSection(self.sections[index]);
-            }, 1);
+            $menu.transition({left:"-300px"});
+            $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
+                $(this).hide();
+            });
+            
+            self.loadSubSection(self.sections[$(this).data('index')]);
         });
     };
 
