@@ -45,7 +45,9 @@ modules.product = function(){
 
                 new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
 
-                $(self.element).on(self.eventType, '[data-product]', function(){});
+                $(self.element).on(self.eventType, '[data-product]', function(){
+
+                });
 
                 $(self.element).on(self.eventType, '[data-plus]', function(){
                     module.load('productDetails', {product: self.products[$(this).data('index')]});
@@ -58,6 +60,7 @@ modules.product = function(){
     };
 
     this.showUi = function(){
+
         $(self.element).find('[data-product-header]').transition({opacity: 1});
         $(self.element).find('[data-product]').transition({opacity: 1});
     };
