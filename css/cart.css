@@ -5,6 +5,7 @@
     width: auto;
     height: 50px;
     border-bottom-left-radius: 5px;
+    z-index: 1;
 }
 
 .cart > * {
@@ -26,13 +27,24 @@
 }
 
 .cart > .amount {
-
     margin-top: 9px;
     margin-right: 20px;
     height: 30px;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 50%;
+    border-radius: 13px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cart > .price {
+    margin-top: 9px;
+    margin-right: 20px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 13px;
     line-height: 30px;
     text-align: center;
     font-weight: bold;

@@ -13,7 +13,6 @@
 }
 
 .section-header .line {
-    border: 1px solid red;
     display: block;
     height: 1px;
     border: 0;
@@ -32,6 +31,10 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
+}
+
+.main-menu:focus .item {
+    border: 1px solid red;
 }
 
 .main-menu .item {
