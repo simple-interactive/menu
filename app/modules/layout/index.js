@@ -6,11 +6,17 @@ modules.layout = function(){
     this.sections = null;
     this.menuExists = false;
 
+    this.eventType = 'touchstart';
+
     this.init = function () {
 
         services.api.getSections(null, function(sections){
 
             self.sections = sections.sections;
+
+            if (self.sections.length > 8) {
+                self.eventType = 'click';
+            }
 
             self.view.render('layout/view/index', sections, function(tpl){
 
@@ -22,7 +28,9 @@ modules.layout = function(){
                 self.updateStyles();
                 self.showUi();
 
-                $(self.element).on('touchstart', '[data-section]', function(){
+                console.log(self.eventType);
+
+                $(self.element).on(self.eventType, '[data-section]', function(){
 
                     self.initiateMenu();
 
@@ -87,7 +95,7 @@ modules.layout = function(){
             }, config.animation.duration);
         });
 
-        $(self.element).on('touchstart', '[data-main-section]', function(){
+        $(self.element).on(self.eventType, '[data-main-section]', function(){
 
             $menu.transition({x:-300});
             $menuBackdrop.transition({opacity: 0});

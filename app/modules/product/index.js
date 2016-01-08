@@ -3,6 +3,8 @@ modules.product = function(){
     this.section = null;
     this.products = null;
 
+    this.eventType = 'touchstart';
+
     this.init = function () {
 
         self.section = self.params.section;
@@ -33,15 +35,19 @@ modules.product = function(){
                 products: temparray
             };
 
+            if (self.products.length > 8) {
+                self.eventType = 'click';
+            }
+
             self.view.render('product/view/index', data, function(tpl){
 
                 $(self.element).html(tpl);
 
                 new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
 
-                $(self.element).on('touchstart', '[data-product]', function(){});
+                $(self.element).on(self.eventType, '[data-product]', function(){});
 
-                $(self.element).on('touchstart', '[data-plus]', function(){
+                $(self.element).on(self.eventType, '[data-plus]', function(){
                     module.load('productDetails', {product: self.products[$(this).data('index')]});
                     return false;
                 });
@@ -60,6 +66,8 @@ modules.product = function(){
 
         delete self.section;
         delete self.products;
+
+        delete self.eventType;
 
         $(self.element).remove();
     };

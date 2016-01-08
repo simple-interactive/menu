@@ -3,6 +3,8 @@ modules.section = function(){
     this.section = null;
     this.sections = null;
 
+    this.eventType = 'touchstart';
+
     this.init = function () {
         self.section = self.params.section;
         self.reloadSections();
@@ -13,6 +15,7 @@ modules.section = function(){
         services.api.getSections(self.section.id, function(sections){
 
             self.sections = sections.sections;
+
             self.drawMenu();
         });
     };
@@ -41,6 +44,10 @@ modules.section = function(){
             swiperOptions.pagination = '.swiper-pagination';
         }
 
+        if (self.sections.length > 8) {
+            self.eventType = 'click';
+        }
+
         self.view.render('section/view/index', {sections: temparray, section: self.section}, function(renderedHtml){
 
             $(self.element).html(renderedHtml);
@@ -49,7 +56,7 @@ modules.section = function(){
             self.showUi();
         });
 
-        $(self.element).on('touchstart', '[data-sub-section]', function(){
+        $(self.element).on(self.eventType, '[data-sub-section]', function(){
 
             $(self.element).find('[data-section-header]').transition({opacity: 0, y: -200});
             $(self.element).find('[data-sub-section]').transition({opacity: 0, y: 200});
@@ -78,6 +85,8 @@ modules.section = function(){
 
         delete self.section;
         delete self.sections;
+
+        delete self.eventType;
 
         $(self.element).remove();
     };
