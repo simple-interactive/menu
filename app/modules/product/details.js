@@ -60,12 +60,12 @@ modules.productDetails = function(){
 
             $('[data-product-details]').find('.modal-body').html(tpl);
 
-            $('[data-product-details]').find('[data-product-plus]').on('click', function(){
+            $('[data-product-details]').find('[data-product-plus]').on('touchstart', function(){
                 ++self.order.amount;
                 self.drawOrder();
             });
 
-            $('[data-product-details]').find('[data-product-minus]').on('click', function(){
+            $('[data-product-details]').find('[data-product-minus]').on('touchstart', function(){
 
                 if (self.order.amount < 2) {
                     return false;
@@ -75,12 +75,12 @@ modules.productDetails = function(){
                 self.drawOrder();
             });
 
-            $('[data-product-details]').find('[data-option-plus]').on('click', function(){
+            $('[data-product-details]').find('[data-option-plus]').on('touchstart', function(){
                 ++self.order.options[$(this).data('index')].amount;
                 self.drawOrder();
             });
 
-            $('[data-product-details]').find('[data-option-minus]').on('click', function(){
+            $('[data-product-details]').find('[data-option-minus]').on('touchstart', function(){
 
                 if (self.order.options[$(this).data('index')].amount < 1) {
                     return false;
@@ -90,7 +90,7 @@ modules.productDetails = function(){
                 self.drawOrder();
             });
 
-            $('[data-product-details]').find('[data-add-to-cart]').on('click', function(){
+            $('[data-product-details]').find('[data-add-to-cart]').on('touchstart', function(){
 
                 if (self.order.amount < 1) {
                     return false;

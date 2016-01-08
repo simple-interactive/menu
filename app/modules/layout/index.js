@@ -22,7 +22,7 @@ modules.layout = function(){
                 self.updateStyles();
                 self.showUi();
 
-                $(self.element).on('click', '[data-section]', function(){
+                $(self.element).on('touchstart', '[data-section]', function(){
 
                     self.initiateMenu();
 
@@ -71,7 +71,7 @@ modules.layout = function(){
         var $menu = $(self.element).find('[data-container-menu] .menu');
         var $menuBackdrop = $(self.element).find('[data-container-menu] .menu-backdrop');
 
-        $(self.element).on('click', '[data-menu-open]', function(){
+        $(self.element).on('touchstart', '[data-menu-open]', function(){
 
             $menuBackdrop.show();
             $menuBackdrop.transition({opacity: 0.6});
@@ -79,7 +79,7 @@ modules.layout = function(){
             $menu.transition({x:0});
         });
 
-        $(self.element).on('click', '[data-menu-close]', function(){
+        $(self.element).on('touchstart', '[data-menu-close]', function(){
             $menu.transition({x:-300});
             $menuBackdrop.transition({opacity: 0});
             setTimeout(function(){
@@ -87,7 +87,7 @@ modules.layout = function(){
             }, config.animation.duration);
         });
 
-        $(self.element).on('click', '[data-main-section]', function(){
+        $(self.element).on('touchstart', '[data-main-section]', function(){
 
             $menu.transition({x:-300});
             $menuBackdrop.transition({opacity: 0});
