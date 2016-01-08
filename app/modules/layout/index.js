@@ -28,8 +28,6 @@ modules.layout = function(){
                 self.updateStyles();
                 self.showUi();
 
-                console.log(self.eventType);
-
                 $(self.element).on(self.eventType, '[data-section]', function(){
 
                     self.initiateMenu();

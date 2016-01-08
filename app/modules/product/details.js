@@ -10,7 +10,7 @@ modules.productDetails = function(){
 
     this.init = function(){
 
-        self.product = self.params.product;
+        self.product = $.extend(true, {}, self.params.product);
 
         self.order.product = self.product;
         self.order.totalPrice = self.product.price;
@@ -104,8 +104,8 @@ modules.productDetails = function(){
 
     this.unload = function(){
 
-        delete self.product;
-        delete self.order;
+        delete this.product;
+        delete this.order;
 
         $('[data-product-details]').remove();
     };
