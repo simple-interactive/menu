@@ -90,7 +90,7 @@ modules.layout = function(){
 
             // $menu.css({left: -300});
             $menu.transition({x:-300});
-            $menuBackdrop.hide();
+            //$menuBackdrop.hide();
             $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
                 $(this).hide();
             });
