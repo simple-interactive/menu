@@ -34,13 +34,13 @@ html {
     user-drag: none;
 }
 
-input {
-    -webkit-user-select: auto !important;
-    -khtml-user-select: auto !important;
-    -moz-user-select: auto !important;
-    -ms-user-select: auto !important;
-    user-select: auto !important;
-}
+/*input {*/
+    /*-webkit-user-select: auto !important;*/
+    /*-khtml-user-select: auto !important;*/
+    /*-moz-user-select: auto !important;*/
+    /*-ms-user-select: auto !important;*/
+    /*user-select: auto !important;*/
+/*}*/
 
 
 [data-section],
