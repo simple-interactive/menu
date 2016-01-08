@@ -88,7 +88,10 @@ modules.layout = function(){
 
         $(self.element).on('touchstart', '[data-main-section]', function(){
 
-            $(self.element).find('[data-menu-close]').click();
+            $menu.transition({left:"-300px"});
+            $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
+                $(this).hide();
+            });
 
             var index = $(this).data('index');
 
