@@ -81,19 +81,19 @@ modules.layout = function(){
 
         $(self.element).on('click', '[data-menu-close]', function(){
             $menu.transition({x:-300});
-            $menuBackdrop.transition({opacity:0});
+            $menuBackdrop.transition({opacity: 0});
             setTimeout(function(){
                 $menuBackdrop.hide();
-            }, config.animation.duration)
+            }, config.animation.duration);
         });
 
         $(self.element).on('click', '[data-main-section]', function(){
 
             $menu.transition({x:-300});
-
-            $menuBackdrop.animate({opacity: 0}, config.animation.duration, function(){
-                $(this).hide();
-            });
+            $menuBackdrop.transition({opacity: 0});
+            setTimeout(function(){
+                $menuBackdrop.hide();
+            }, config.animation.duration);
 
             self.loadSubSection(self.sections[$(this).data('index')]);
         });
