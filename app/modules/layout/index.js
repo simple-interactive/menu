@@ -135,7 +135,7 @@ modules.layout = function(){
             module.unload('product');
 
             if (section.productsCount) {
-                module.load('product', {section: section});
+                module.load('product', {section: section}, $(self.element).find('[data-container=main]'), true);
             }
             else {
                 module.load('section', {section: section}, $(self.element).find('[data-container=main]'), true);
