@@ -43,10 +43,41 @@ modules.product = function(){
 
                 $(self.element).html(tpl);
 
-                new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
+                if (self.products.length > 8) {
+                    new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
+                }
+
 
                 $(self.element).on(self.eventType, '[data-product]', function(){
 
+                    var productElement = $(this);
+
+                    self.view.render('product/view/description', {product: self.products[productElement.data('index')]}, function(tpl){
+                        $('body').prepend(tpl);
+
+                        $('[data-product-description]').on('touchstart', function(){
+                            $('[data-product-description] .product-description-content').transition({opacity: 0});
+                            setTimeout(function(){
+                                $('[data-product-description]').remove();
+                            }, config.animation.duration);
+                        });
+
+                        $('[data-product-description] .product-description-content div').on('touchstart', function(e){
+                            e.stopPropagation();
+                        });
+
+                        var top = 14+Math.floor(productElement.index() / 4)*262 + "px";
+                        var left = 102+Math.floor(productElement.index() % 4)*225 + "px";
+
+                        $('[data-product-description] .product-description-content').css({
+                            top: top,
+                            left: left
+                        });
+
+                        $('[data-product-description] .product-description-content').transition({
+                            opacity: 1
+                        });
+                    });
                 });
 
                 $(self.element).on(self.eventType, '[data-plus]', function(){
