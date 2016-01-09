@@ -23,10 +23,15 @@ modules.layout = function(){
                 $(self.element).html(tpl);
 
                 services.shoppingCart.setShoppingCartCallback(self.shoppingCartUpdated);
-                self.shoppingCartUpdated();
 
                 self.updateStyles();
                 self.showUi();
+
+                $(self.element).on('touchstart', '[data-cart]', function(){
+                    if (services.shoppingCart.getAmount()) {
+                        module.load('cart');
+                    }
+                });
 
                 $(self.element).on(self.eventType, '[data-section]', function(){
 
@@ -41,7 +46,7 @@ modules.layout = function(){
             });
         });
 
-        self.interval = setInterval(self.updateStyles, 20000);
+        self.interval = setInterval(self.updateStyles, config.style.updatePeriod);
     };
 
     this.showUi = function(){
@@ -105,12 +110,12 @@ modules.layout = function(){
         });
     };
 
-    this.shoppingCartUpdated = function(orders){
+    this.shoppingCartUpdated = function(){
 
-        orders = orders || {
-            orders: [],
-            price: 0,
-            amount: 0
+        var orders = {
+            list: services.shoppingCart.getOrders(),
+            price: services.shoppingCart.getTotalPrice(),
+            amount: services.shoppingCart.getAmount()
         };
 
         self.view.render('layout/view/cart', orders, function(tpl){

@@ -47,3 +47,7 @@ html {
 {
     opacity: 0;
 }
+
+input[type=button] {
+    outline: none;
+}

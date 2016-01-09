@@ -4,8 +4,7 @@ modules.productDetails = function(){
     this.order = {
         product: null,
         amount: 1,
-        options: [],
-        totalPrice: 0
+        options: []
     };
 
     this.init = function(){
@@ -13,7 +12,7 @@ modules.productDetails = function(){
         self.product = $.extend(true, {}, self.params.product);
 
         self.order.product = self.product;
-        self.order.totalPrice = self.product.price;
+
         self.order.options = self.product.options;
 
         self.view.render('product/view/details', {product: self.product, order: self.order}, function(tpl){
@@ -96,7 +95,7 @@ modules.productDetails = function(){
                     return false;
                 }
 
-                services.shoppingCart.add(self.getVars());
+                services.shoppingCart.add(self.order);
                 $('[data-product-details]').modal('hide');
             });
         });
@@ -104,8 +103,8 @@ modules.productDetails = function(){
 
     this.unload = function(){
 
-        delete this.product;
-        delete this.order;
+        delete self.product;
+        delete self.order;
 
         $('[data-product-details]').remove();
     };

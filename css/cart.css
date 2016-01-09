@@ -49,3 +49,43 @@
     text-align: center;
     font-weight: bold;
 }
+
+[data-cart-details] .options .title {
+    font-weight: bold !important;
+}
+
+[data-cart-details] hr {
+    width: 980px;
+}
+
+[data-cart-details] .options .title span {
+    display: block;
+    font-size: 17px;
+    font-weight: normal;
+    max-width: 272px;
+    max-height: 28px;
+    overflow: hidden;
+}
+
+[data-cart-details] .cart-container {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 960px;
+    height: 496px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+[data-cart-details] .cart-container .table {
+    margin-left: 0px;
+    width: 963px;
+}
+
+[data-cart-details] .cart-container .table .controls {
+    width: 100px;
+    font-size: 30px;
+}
+
+[data-cart-details] .cart-container .table .controls span:first-child {
+    margin-right: 11px;
+}

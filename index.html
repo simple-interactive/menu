@@ -24,6 +24,7 @@
         document.write('<link href="css/main-menu.css?_=' + Date.now() + '" rel="stylesheet" />');
         document.write('<link href="css/section.css?_=' + Date.now() + '" rel="stylesheet" />');
         document.write('<link href="css/product.css?_=' + Date.now() + '" rel="stylesheet" />');
+        document.write('<link href="css/modal.css?_=' + Date.now() + '" rel="stylesheet" />');
 
     </script>
 
@@ -89,6 +90,10 @@
 <script type="application/xhtml+xml" data-view="product/view/details-content" data-src="app/modules/product/view/details-content.html"></script>
 <script type="application/xhtml+xml" data-view="product/view/description" data-src="app/modules/product/view/description.html"></script>
 
+<script src="app/modules/cart/index.js"></script>
+<script type="application/xhtml+xml" data-view="cart/view/index" data-src="app/modules/cart/view/index.html"></script>
+<script type="application/xhtml+xml" data-view="cart/view/cart-content" data-src="app/modules/cart/view/cart-content.html"></script>
+
 <!-- Grunt:Build:JSSection -->
 
 <!-- Grunt:Build:Config -->
@@ -99,6 +104,9 @@
         token: "",
         animation: {
             duration: 250
+        },
+        style: {
+            updatePeriod: 120000
         }
     };
 </script>

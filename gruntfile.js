@@ -6,6 +6,9 @@ module.exports = function(grunt) {
             token: '',
             animation: {
                 duration: 350
+            },
+            style: {
+                updatePeriod: 20000
             }
         },
         dev: {
@@ -13,6 +16,9 @@ module.exports = function(grunt) {
             token: '',
             animation: {
                 duration: 350
+            },
+            style: {
+                updatePeriod: 20000
             }
         }
     };

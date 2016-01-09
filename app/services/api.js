@@ -149,6 +149,15 @@ window.services.api = function(){
     };
 
     /**
+     * @param {Object} order
+     * @param {Function} successCallback
+     * @param {Function} failureCallback
+     */
+    this.order = function(order, successCallback, failureCallback){
+        self.call('post', 'order', {order: order}, successCallback, failureCallback);
+    };
+
+    /**
      * Send request to an api
      *
      * @param {string} method

@@ -1,0 +1,57 @@
+<div class="cart-container">
+
+    <% for (var i=0; i<orders.length; i++) { %>
+
+        <div class="table options" data-stylized="true" data-color="foreground">
+
+            <div class="row" data-option="true">
+
+                <div class="controls" data-stylized="true" data-color="brand">
+                    <span data-delete="true" data-index="<%= i %>" class="fa fa-trash"></span>
+                    <span class="fa fa-pencil"></span>
+                </div>
+
+                <div class="title">
+
+                    <%= orders[i].product.title %>
+
+                    <span>
+                        <% var options = []; for (var optionIndex = 0; optionIndex < orders[i].options.length; optionIndex++) { %>
+                            <% if (orders[i].options[optionIndex].amount) { %>
+                                <% options.push(orders[i].options[optionIndex].title); %>
+                            <% } %>
+                        <% } %>
+                        <%= options.join(',') %>
+                    </span>
+                </div>
+
+                <div class="price-per-one"><%= orders[i].pricePerOne %> грн.</div>
+
+                <div class="minus" data-amount-minus="true" data-index="<%= i %>">
+                    <span class="fa fa-minus-circle" data-stylized="true" data-color="brand"></span>
+                </div>
+                <div class="amount"><span data-amount="true"><%= orders[i].amount %></span>&nbsp;шт.</div>
+
+                <div class="plus" data-amount-plus="true" data-index="<%= i %>">
+                    <span class="fa fa-plus-circle" data-stylized="true" data-color="brand"></span>
+                </div>
+                <div class="price-total"><span data-price-total="true"><%= orders[i].priceTotal %></span> грн.</div>
+            </div>
+        </div>
+
+        <% if ( i+1 < orders.length) { %>
+            <hr data-stylized="true" data-border-color="foreground" />
+        <% } %>
+
+    <% } %>
+
+</div>
+
+<hr class="cart-footer" data-stylized="true" data-border-color="foreground" />
+
+<div class="table total" data-stylized="true" data-color="foreground">
+    <div class="row">
+        <div class="title">Итого:</div>
+        <div class="price-total"><span data-price-total="true"><%= price %></span> грн.</div>
+    </div>
+</div>
