@@ -9,17 +9,19 @@ module.exports = function(grunt) {
             },
             style: {
                 updatePeriod: 20000
-            }
+            },
+            isApp: true
         },
         dev: {
-            endpoint: 'http://simple.backend',
+            endpoint: 'http://185.70.109.10:85',
             token: '',
             animation: {
                 duration: 350
             },
             style: {
                 updatePeriod: 20000
-            }
+            },
+            isApp: false
         }
     };
 
