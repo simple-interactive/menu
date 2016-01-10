@@ -191,6 +191,8 @@ window.services.api = function(){
             complete: function (response) {
 
                 if (response.status == 403) {
+                    module.unloadAll();
+                    module.load('token', {callback: dispatcher.initApp});
                     return false;
                 }
 

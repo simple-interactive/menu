@@ -168,5 +168,27 @@ modules.layout = function(){
         });
     };
 
+    this.unload = function(){
+
+        if ($('[data-cart-thanks]').size()) {
+            $('[data-cart-thanks]').modal('hide');
+        }
+
+        services.shoppingCart.clear();
+
+        clearInterval(self.interval);
+
+        delete self.style;
+        delete self.interval;
+
+        delete self.sections;
+        delete self.menuExists;
+
+        delete self.eventType;
+
+        $(self.element).remove();
+        $('.modal-backdrop').remove();
+    };
+
     var self = this;
 };

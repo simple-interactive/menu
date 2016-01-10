@@ -1,7 +1,5 @@
 modules.token = function (){
 
-    this.token = null;
-
     this.init = function(){
 
         self.view.render('token/view/index', {}, function(tpl){
@@ -13,22 +11,22 @@ modules.token = function (){
                     self.unload();
                 });
 
-            $(self.element).find('[data-token]').on('change', function(){
-                self.token = $(this).val();
-            });
-
             $(self.element).find('[data-connect]').on('touchstart', function(){
 
                 var $submit = $(this);
-                $inputs = $(self.element).find('input');
+                var $inputs = $(self.element).find('input');
+                var token = $(self.element).find('[data-token]').val();
 
                 $submit.attr('disabled', 'disabled').addClass('loading');
                 $inputs.attr('disabled', 'disabled');
                 $inputs.removeClass('animated').removeClass('shake');
 
                 services.api.pair(
-                    self.token,
+                    token,
                     function(response){
+                        if (self.params.callback) {
+                            self.params.callback(token);
+                        }
                         $(self.element).find('.modal').modal('hide');
                     },
                     function(response){
@@ -44,12 +42,6 @@ modules.token = function (){
     };
 
     this.unload = function(){
-
-        if (self.params.callback) {
-            self.params.callback(self.token);
-        }
-
-        delete self.token;
         $(self.element).remove();
     };
 
