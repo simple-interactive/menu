@@ -33,3 +33,36 @@
     border-radius: 5px;
     color: white;
 }
+
+[data-module=token] .modal .modal-dialog {
+    width: 500px;
+}
+
+[data-module=token] .modal .modal-body {
+    height: auto;
+    border-top-width: 0;
+}
+
+[data-module=token] .modal .modal-content {
+    height: auto;
+}
+
+[data-module=token] .modal .modal-content .form-group {
+    margin-bottom: 0;
+}
+
+[data-module=token] .modal input {
+    padding: 0;
+    border: 0;
+    padding-left: 0;
+    padding-right: 0;
+    text-transform: none;
+    margin-left: 0;
+    margin-right: 0;
+    position: static;
+    outline: none;
+}
+
+[data-module=token] .modal button {
+    outline: none;
+}

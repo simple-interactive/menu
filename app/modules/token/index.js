@@ -20,10 +20,11 @@ modules.token = function (){
             $(self.element).find('[data-connect]').on('touchstart', function(){
 
                 var $submit = $(this);
-                var $inputs = $(self.element).find('input');
+                $inputs = $(self.element).find('input');
 
                 $submit.attr('disabled', 'disabled').addClass('loading');
                 $inputs.attr('disabled', 'disabled');
+                $inputs.removeClass('animated').removeClass('shake');
 
                 services.api.pair(
                     self.token,
@@ -35,7 +36,7 @@ modules.token = function (){
                         $submit.removeAttr('disabled').removeClass('loading');
                         $inputs.removeAttr('disabled');
 
-                        $inputs.transition({ scale: 1.2 }).transition({ scale: 1 });
+                        $inputs.addClass('animated shake');
                     }
                 );
             });
