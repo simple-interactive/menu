@@ -3,6 +3,7 @@ modules.token = function (){
     this.init = function(){
 
         self.view.render('token/view/index', {}, function(tpl){
+
             $(self.element).html(tpl);
 
             $(self.element).find('.modal')

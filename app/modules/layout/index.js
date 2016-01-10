@@ -42,6 +42,22 @@ modules.layout = function(){
                         self.loadSubSection(self.sections[index]);
                     }, 1);
                 });
+
+                $(self.element).find('[data-call-waiter]').on('touchstart', function(){
+
+                    services.api.callWaiter(function(){
+                        self.view.render('layout/view/call-waiter', {}, function(tpl){
+                            $('body').prepend(tpl);
+
+                            $('[data-call-waiter].modal')
+                                .modal({backdrop: 'static'})
+                                .on('hidden.bs.modal', function(){
+                                    $('[data-call-waiter].modal').remove();
+                                });
+
+                        });
+                    });
+                });
             });
         });
 
@@ -174,6 +190,10 @@ modules.layout = function(){
 
         if ($('[data-cart-thanks]').size()) {
             $('[data-cart-thanks]').modal('hide');
+        }
+
+        if ($('[data-call-waiter].modal').size()) {
+            $('[data-call-waiter].modal').modal('hide');
         }
 
         services.shoppingCart.clear();

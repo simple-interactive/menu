@@ -158,6 +158,14 @@ window.services.api = function(){
     };
 
     /**
+     * Calls waiter
+     * @param {Function} successCallback
+     */
+    this.callWaiter = function(successCallback){
+        self.call('get', 'call/waiter', {}, successCallback);
+    };
+
+    /**
      * Send request to an api
      *
      * @param {string} method

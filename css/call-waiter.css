@@ -1,0 +1,17 @@
+[data-call-waiter] .modal-dialog {
+    width: 600px !important;
+}
+
+[data-call-waiter] .modal-content {
+    height: 300px !important;
+}
+
+[data-call-waiter] .message {
+    text-align: center;
+    line-height: 46px;
+    font-size: 20px;
+}
+
+[data-call-waiter] .message b {
+    font-size: 24px;
+}

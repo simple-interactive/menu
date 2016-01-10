@@ -15,13 +15,18 @@ $(function(){
 
         config.token = storage.getItem('token');
 
-        services.api.pairCheck(config.token,
-            function(){
-                dispatcher.initApp(config.token);
-            },
-            function(){
-                module.load('token', {callback: dispatcher.initApp});
-            }
-        );
+        if (config.token) {
+            services.api.pairCheck(config.token,
+                function(){
+                    dispatcher.initApp(config.token);
+                },
+                function(){
+                    storage.removeItem('token');
+                    module.load('token', {callback: dispatcher.initApp});
+                }
+            );
+        } else {
+            module.load('token', {callback: dispatcher.initApp});
+        }
     };
 });
