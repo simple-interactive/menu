@@ -11,11 +11,8 @@ modules.section = function(){
     };
 
     this.reloadSections = function () {
-
         services.api.getSections(self.section.id, function(sections){
-
             self.sections = sections.sections;
-
             self.drawMenu();
         });
     };
@@ -51,7 +48,10 @@ modules.section = function(){
         self.view.render('section/view/index', {sections: temparray, section: self.section}, function(renderedHtml){
 
             $(self.element).html(renderedHtml);
-            new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
+
+            if (self.sections.length > 8) {
+                new Swiper ($(self.element).find('.swiper-container'), swiperOptions);
+            }
 
             self.showUi();
         });
