@@ -80,10 +80,16 @@ modules.product = function(){
                     });
                 });
 
-                $(self.element).on(self.eventType, '[data-plus]', function(){
+                $(self.element).on(self.eventType, '[data-plus]', function(e){
+
+                    e.stopPropagation();
+
                     services.shoppingCart.add(self.products[$(this).data('index')]);
-                    module.load('productDetails', {index: services.shoppingCart.getAmount()-1});
-                    return false;
+
+                    module.load('productDetails', {
+                        index: services.shoppingCart.getAmount()-1,
+                        isTemporary: true
+                    });
                 });
 
                 self.showUi();

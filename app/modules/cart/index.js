@@ -36,7 +36,6 @@ modules.cart = function (){
         };
 
         self.view.render('cart/view/cart-content', tplData, function(tpl){
-
             $('[data-cart-content]').html(tpl);
 
             $('[data-cart-details]').find('[data-delete]').on('click', function(){
@@ -62,7 +61,7 @@ modules.cart = function (){
                 self.updateContent();
             });
 
-            $('[data-cart-details]').find('[data-make-order]').on('touchstart', function(){
+            $('[data-cart-details]').find('[data-make-order]').on('click', function(){
                 services.api.order(
                     services.shoppingCart.getClearOrders(),
                     function(){
@@ -78,6 +77,7 @@ modules.cart = function (){
 
     this.finished = function(result){
 
+        self.needToUpdate = false;
         $('[data-cart-details]').modal('hide');
 
         if (self.params.callback) {
@@ -93,7 +93,7 @@ modules.cart = function (){
             modules.layout.shoppingCartUpdated();
         }
 
-        delete self.order;
+        delete self.needToUpdate;
 
         $(self.element).remove();
         $('[data-cart-details]').remove();

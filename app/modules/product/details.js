@@ -6,7 +6,7 @@ modules.productDetails = function(){
 
         self.order = services.shoppingCart.getOrders()[self.params.index];
 
-        self.view.render('product/view/details', {order: self.order}, function(tpl){
+        self.view.render('product/view/details', {}, function(tpl){
 
             $('body').append(tpl);
 
@@ -59,7 +59,9 @@ modules.productDetails = function(){
             });
 
             $('[data-product-details]').find('[data-dismiss]').on('touchstart', function(){
-                services.shoppingCart.remove(self.params.index);
+                if (self.params.isTemporary) {
+                    services.shoppingCart.remove(self.params.index);
+                }
                 $('[data-product-details]').modal('hide');
             });
         });
