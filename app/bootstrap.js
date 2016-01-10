@@ -11,6 +11,13 @@ $(function(){
 
     dispatcher.postDispatch = function () {
 
+        try {
+            StatusBar.hide();
+        }
+        catch(e){
+            StatusBar = {hide: function(){}};
+        }
+
         services.ui.init();
 
         config.token = storage.getItem('token');

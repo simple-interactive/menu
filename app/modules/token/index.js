@@ -14,9 +14,7 @@ modules.token = function (){
 
             $(self.element).find('[data-connect]').on('touchstart', function(){
 
-                if (config.isApp && StatusBar && StatusBar.hide) {
-                    StatusBar.hide();
-                }
+                StatusBar.hide();
 
                 var $submit = $(this);
                 var $inputs = $(self.element).find('input');
