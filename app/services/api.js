@@ -2,6 +2,10 @@ window.services.api = function(){
 
     this.cache = [];
 
+    setInterval(function(){
+        services.api.cache = [];
+    }, config.cache.delay);
+
     /**
      * @type {{endpoint: (config.endpoint|string)}}
      */

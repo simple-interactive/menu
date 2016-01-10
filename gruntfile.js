@@ -10,7 +10,10 @@ module.exports = function(grunt) {
             style: {
                 updatePeriod: 20000
             },
-            isApp: true
+            isApp: true,
+            cache: {
+                delay: 60000
+            }
         },
         dev: {
             endpoint: 'http://185.70.109.10:85',
@@ -21,7 +24,10 @@ module.exports = function(grunt) {
             style: {
                 updatePeriod: 20000
             },
-            isApp: false
+            isApp: false,
+            cache: {
+                delay: 60000
+            }
         }
     };
 
