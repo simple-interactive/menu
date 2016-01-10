@@ -2,6 +2,8 @@ modules.cart = function (){
 
     this.order = null;
     this.needToUpdate = false;
+    this.results = false;
+    this.ordered = false;
 
     this.init = function(){
 
@@ -77,17 +79,22 @@ modules.cart = function (){
 
     this.finished = function(result){
 
+        self.results = result;
+        self.ordered = true;
         self.needToUpdate = false;
-        $('[data-cart-details]').modal('hide');
 
-        if (self.params.callback) {
-            self.params.callback(result);
-        }
+        $('[data-cart-details]').modal('hide');
     };
 
     this.unload = function(){
 
+        if (self.params.callback && self.ordered) {
+            self.params.callback(self.results);
+        }
+
         delete self.order;
+        delete self.results;
+        delete self.finished;
 
         if (self.needToUpdate) {
             modules.layout.shoppingCartUpdated();

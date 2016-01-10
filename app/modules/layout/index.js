@@ -152,8 +152,10 @@ modules.layout = function(){
 
     this.finished = function(result){
 
-        services.shoppingCart.clear();
-        self.shoppingCartUpdated();
+        if (result) {
+            services.shoppingCart.clear();
+            self.shoppingCartUpdated();
+        }
 
         self.view.render('layout/view/thanks', {result: result}, function(tpl){
 
