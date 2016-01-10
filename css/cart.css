@@ -55,7 +55,7 @@
 }
 
 [data-cart-details] hr {
-    width: 980px;
+    width: 958px;
 }
 
 [data-cart-details] .options .title span {
@@ -70,7 +70,7 @@
 [data-cart-details] .cart-container {
     margin-left: 20px;
     margin-top: 20px;
-    width: 960px;
+    width: 1000px;
     height: 496px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -88,4 +88,18 @@
 
 [data-cart-details] .cart-container .table .controls span:first-child {
     margin-right: 11px;
+}
+
+[data-cart-thanks] .modal-dialog {
+    width: 600px !important;
+}
+
+[data-cart-thanks] .modal-content {
+    height: 300px !important;
+}
+
+[data-cart-thanks] .message {
+    text-align: center;
+    line-height: 46px;
+    font-size: 24px;
 }

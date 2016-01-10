@@ -1,6 +1,7 @@
 modules.cart = function (){
 
     this.order = null;
+    this.needToUpdate = false;
 
     this.init = function(){
 
@@ -9,6 +10,7 @@ modules.cart = function (){
             $('body').prepend(tpl);
 
             self.updateContent();
+            self.needToUpdate = false;
 
             $('[data-cart-details]')
                 .modal({backdrop: 'static'})
@@ -19,6 +21,8 @@ modules.cart = function (){
     };
 
     this.updateContent = function(){
+
+        self.needToUpdate = true;
 
         if (!services.shoppingCart.getOrders().length) {
             $('[data-cart-details]').modal('hide');
@@ -40,6 +44,14 @@ modules.cart = function (){
                 self.updateContent();
             });
 
+            $('[data-cart-details]').find('[data-update]').on('click', function(){
+
+                module.load('productDetails', {
+                    index: $(this).data('index'),
+                    callback: self.updateContent
+                });
+            });
+
             $('[data-cart-details]').find('[data-amount-minus]').on('click', function(){
                 services.shoppingCart.decrease($(this).data('index'));
                 self.updateContent();
@@ -49,10 +61,37 @@ modules.cart = function (){
                 services.shoppingCart.increase($(this).data('index'));
                 self.updateContent();
             });
+
+            $('[data-cart-details]').find('[data-make-order]').on('touchstart', function(){
+                services.api.order(
+                    services.shoppingCart.getClearOrders(),
+                    function(){
+                        self.finished(true);
+                    },
+                    function(){
+                        self.finished(false);
+                    }
+                );
+            });
         });
     };
 
+    this.finished = function(result){
+
+        $('[data-cart-details]').modal('hide');
+
+        if (self.params.callback) {
+            self.params.callback(result);
+        }
+    };
+
     this.unload = function(){
+
+        delete self.order;
+
+        if (self.needToUpdate) {
+            modules.layout.shoppingCartUpdated();
+        }
 
         delete self.order;
 

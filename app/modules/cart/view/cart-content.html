@@ -8,7 +8,11 @@
 
                 <div class="controls" data-stylized="true" data-color="brand">
                     <span data-delete="true" data-index="<%= i %>" class="fa fa-trash"></span>
-                    <span class="fa fa-pencil"></span>
+
+                    <% if (orders[i].product.options.length) { %>
+                        <span data-update="true" data-index="<%= i %>" class="fa fa-pencil"></span>
+                    <% } %>
+
                 </div>
 
                 <div class="title">
@@ -16,12 +20,12 @@
                     <%= orders[i].product.title %>
 
                     <span>
-                        <% var options = []; for (var optionIndex = 0; optionIndex < orders[i].options.length; optionIndex++) { %>
-                            <% if (orders[i].options[optionIndex].amount) { %>
-                                <% options.push(orders[i].options[optionIndex].title); %>
+                        <% var options = []; for (var j = 0; j < orders[i].options.length; j++) { %>
+                            <% if (orders[i].options[j].amount) { %>
+                                <% options.push(orders[i].options[j].title); %>
                             <% } %>
                         <% } %>
-                        <%= options.join(',') %>
+                        <%= options.join(', ') %>
                     </span>
                 </div>
 

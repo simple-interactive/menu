@@ -1,11 +1,11 @@
 <div class="close" data-dismiss="modal" data-stylized="true" data-color="brand"><span class="fa fa-close"></span></div>
 
-<div class="image" style="background-image: url(<%= product.images[0].url %>);"></div>
+<div class="image" style="background-image: url(<%= order.product.images[0].url %>);"></div>
 
 <div class="table" data-stylized="true" data-color="foreground">
     <div class="row">
-        <div class="title"><%= product.title %></div>
-        <div class="price-per-one" data-price-one="true"><%= parseFloat(product.price) %> грн.</div>
+        <div class="title"><%= order.product.title %></div>
+        <div class="price-per-one" data-price-one="true"><%= order.product.price %> грн.</div>
         <div class="minus" data-product-minus="true">
             <span class="fa fa-minus-circle" data-stylized="true" data-color="brand"></span>
         </div>
@@ -13,13 +13,13 @@
         <div class="plus" data-product-plus="true">
             <span class="fa fa-plus-circle" data-stylized="true" data-color="brand"></span>
         </div>
-        <div class="price-total"><span data-price-total="true"><%= productPrice %></span> грн.</div>
+        <div class="price-total"><span data-price-total="true"><%= order.priceWithoutOptions %></span> грн.</div>
     </div>
 </div>
 
 <hr data-stylized="true" data-border-color="foreground" />
 
-<% if (product.options.length) { %>
+<% if (order.product.options.length) { %>
 
 <div class="line">Добавить:</div>
 
@@ -28,7 +28,7 @@
 <div class="table options" data-stylized="true" data-color="foreground">
     <div class="row" data-option="true">
         <div class="title"><%= order.options[i].title %></div>
-        <div class="price-per-one" data-price-one="true"><%= parseFloat(order.options[i].price) %> грн.</div>
+        <div class="price-per-one" data-price-one="true"><%= order.options[i].price %> грн.</div>
 
         <div class="minus" data-option-minus="true"  data-index="<%= i %>">
             <span class="fa fa-minus-circle" data-stylized="true" data-color="brand"></span>
@@ -51,7 +51,7 @@
 <div class="table total" data-stylized="true" data-color="foreground">
     <div class="row">
         <div class="title">Итого:</div>
-        <div class="price-total"><span data-price-total="true"><%= totalPrice %></span> грн.</div>
+        <div class="price-total"><span data-price-total="true"><%= order.priceTotal %></span> грн.</div>
     </div>
 </div>
 

@@ -22,14 +22,13 @@ modules.layout = function(){
 
                 $(self.element).html(tpl);
 
-                services.shoppingCart.setShoppingCartCallback(self.shoppingCartUpdated);
-
+                self.shoppingCartUpdated();
                 self.updateStyles();
                 self.showUi();
 
                 $(self.element).on('touchstart', '[data-cart]', function(){
                     if (services.shoppingCart.getAmount()) {
-                        module.load('cart');
+                        module.load('cart', {callback: self.finished});
                     }
                 });
 
@@ -91,8 +90,10 @@ modules.layout = function(){
         });
 
         $(self.element).on('touchstart', '[data-menu-close]', function(){
+
             $menu.transition({x:-300});
             $menuBackdrop.transition({opacity: 0});
+
             setTimeout(function(){
                 $menuBackdrop.hide();
             }, config.animation.duration);
@@ -102,6 +103,7 @@ modules.layout = function(){
 
             $menu.transition({x:-300});
             $menuBackdrop.transition({opacity: 0});
+
             setTimeout(function(){
                 $menuBackdrop.hide();
             }, config.animation.duration);
@@ -146,6 +148,24 @@ modules.layout = function(){
                 module.load('section', {section: section}, $(self.element).find('[data-container=main]'), true);
             }
         }, config.animation.duration)
+    };
+
+    this.finished = function(result){
+
+        services.shoppingCart.clear();
+        self.shoppingCartUpdated();
+
+        self.view.render('layout/view/thanks', {result: result}, function(tpl){
+
+            $('body').prepend(tpl);
+
+            $('[data-cart-thanks]')
+                .modal({backdrop: 'static'})
+                .on('hidden.bs.modal', function(){
+                    $('[data-cart-thanks]').remove();
+                });
+
+        });
     };
 
     var self = this;

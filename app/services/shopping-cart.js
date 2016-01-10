@@ -2,25 +2,28 @@ window.services.shoppingCart = function(){
 
     var self = this;
 
-    this.list = [];
-
-    try {
-        self.list = JSON.parse(storage.getItem('cart-list'));
-    }
-    catch(e){}
+    this.list = storage.getItem('cart-list') || [];
 
     this.amount = 0;
     this.price = 0;
 
-    this.shoppingCartCallback = null;
+    this.add = function(product){
 
-    this.setShoppingCartCallback = function(callback){
-        self.shoppingCartCallback = callback;
-        self.updateMeta();
-    };
+        var options = [];
 
-    this.add = function(order){
-        self.list.push(order);
+        for (var i=0; i<product.options.length;i++) {
+
+            options[i] = $.extend(true, {}, product.options[i]);
+            options[i].amount = 0;
+            options[i].totalPrice = 0;
+        }
+
+        self.list.push({
+            product: product,
+            amount: 1,
+            options: options
+        });
+
         self.updateMeta();
     };
 
@@ -31,7 +34,6 @@ window.services.shoppingCart = function(){
         for (var i=0; i<self.list.length; i++) {
 
             var options = [];
-            console.log(i, self.list[i]);
 
             for (var j=0; j<self.list[i].options.length; j++) {
 
@@ -47,7 +49,7 @@ window.services.shoppingCart = function(){
             order.push({
                 options: options,
                 amount: self.list[i].amount,
-                product: self.list[i].product.id,
+                product: self.list[i].product.id
             });
         }
 
@@ -86,8 +88,28 @@ window.services.shoppingCart = function(){
         self.updateMeta();
     };
 
+    this.increaseOption = function(orderIndex, optionIndex){
+        ++self.list[orderIndex].options[optionIndex].amount;
+        self.updateMeta();
+    };
+
+    this.decreaseOption = function(orderIndex, optionIndex){
+
+        if (self.list[orderIndex].options[optionIndex].amount == 0) {
+            return;
+        }
+
+        --self.list[orderIndex].options[optionIndex].amount;
+        self.updateMeta();
+    };
+
     this.updateOrders = function(orders){
         self.list = orders;
+        self.updateMeta();
+    };
+
+    this.clear = function(){
+        self.list = [];
         self.updateMeta();
     };
 
@@ -104,6 +126,8 @@ window.services.shoppingCart = function(){
 
             for (var j=0; j < self.list[i].options.length; j++) {
 
+                self.list[i].options[j].totalPrice = 0;
+
                 if (self.list[i].options[j].amount) {
 
                     self.list[i].options[j].totalPrice = self.list[i].options[j].price * self.list[i].options[j].amount;
@@ -116,11 +140,7 @@ window.services.shoppingCart = function(){
             self.price += self.list[i].priceTotal;
         }
 
-        storage.setItem('cart-list', JSON.stringify(self.list));
-
-        if (self.shoppingCartCallback) {
-            self.shoppingCartCallback();
-        }
+        storage.setItem('cart-list', self.list);
     };
 
     this.updateMeta();

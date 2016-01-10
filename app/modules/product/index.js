@@ -81,7 +81,8 @@ modules.product = function(){
                 });
 
                 $(self.element).on(self.eventType, '[data-plus]', function(){
-                    module.load('productDetails', {product: self.products[$(this).data('index')]});
+                    services.shoppingCart.add(self.products[$(this).data('index')]);
+                    module.load('productDetails', {index: services.shoppingCart.getAmount()-1});
                     return false;
                 });
 

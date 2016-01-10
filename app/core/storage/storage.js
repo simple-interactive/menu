@@ -5,13 +5,18 @@ window.storage = new (function () {
     };
 
     this.setItem = function (key, value) {
-        return self.adapter.setItem(key, Base64.encode(value.toString()));
+        return self.adapter.setItem(key, Base64.encode(JSON.stringify(value)));
     };
 
     this.getItem = function (key) {
         var value = self.adapter.getItem(key);
         if (value) {
-            return Base64.decode(value);
+            try {
+                return JSON.parse(Base64.decode(value));
+            }
+            catch(e){
+                return null;
+            }
         }
         return value;
     };

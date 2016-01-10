@@ -58,17 +58,15 @@ window.module = function () {
 
         if (typeof modules[name] == 'function') {
             modules[name] = new modules[name]();
+        } else {
+            modules[name].constructor();
         }
 
         try {
-            if (modules[name].constructor) {
-                modules[name].constructor();
-            }
-
             modules[name].element = element;
             modules[name].view = view();
             modules[name].view.basePath = ['app', 'modules'].join('/');
-            modules[name].params = params?params:{};
+            modules[name].params = $.extend(true, {}, params)?params:{};
             modules[name].init();
 
             modules[name].loaded = true;
