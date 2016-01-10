@@ -14,7 +14,7 @@ modules.token = function (){
 
             $(self.element).find('[data-connect]').on('touchstart', function(){
 
-                if (config.isApp && StatusBar) {
+                if (config.isApp && StatusBar && StatusBar.hide) {
                     StatusBar.hide();
                 }
 
