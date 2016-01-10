@@ -46,7 +46,7 @@ window.storage = new (function () {
 
     var self = this;
 
-    if (isApp) {
+    if (config.isApp) {
         this.adapter = cordovaStorage;
     }
     else if (!this.test()) {

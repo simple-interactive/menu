@@ -33,6 +33,24 @@
 </head>
 <body>
 
+<!-- Grunt:Build:Config -->
+
+<script>
+    var config = {
+        endpoint: 'http://185.70.109.10:85',
+        token: "",
+        animation: {
+            duration: 250
+        },
+        style: {
+            updatePeriod: 5000
+        },
+        isApp: false
+    };
+</script>
+
+<!-- Grunt:Build:Config -->
+
 <!-- Grunt:Build:JSSection -->
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -91,24 +109,6 @@
 <script type="application/xhtml+xml" data-view="cart/view/cart-content" data-src="app/modules/cart/view/cart-content.html"></script>
 
 <!-- Grunt:Build:JSSection -->
-
-<!-- Grunt:Build:Config -->
-
-<script>
-    var config = {
-        endpoint: 'http://185.70.109.10:85',
-        token: "",
-        animation: {
-            duration: 250
-        },
-        style: {
-            updatePeriod: 5000
-        },
-        isApp: false
-    };
-</script>
-
-<!-- Grunt:Build:Config -->
 
 </body>
 </html>
