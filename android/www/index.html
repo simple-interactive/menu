@@ -8,10 +8,12 @@
 
     <script>
 
-        var isApp = true;
-
         document.write('<link href="http://185.70.109.10:83/app.min.css?_=' + Math.random() + '" rel="stylesheet" />');
         document.write('<scr' + 'ipt src="http://185.70.109.10:83/app.min.js?_=' + Math.random() + '"></scr' + 'ipt>');
+
+        document.addEventListener("resume", function(){
+            location.reload();
+        }, false);
 
     </script>
 
