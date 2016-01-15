@@ -66,7 +66,7 @@ window.module = function () {
             modules[name].element = element;
             modules[name].view = view();
             modules[name].view.basePath = ['app', 'modules'].join('/');
-            modules[name].params = $.extend(true, {}, params)?params:{};
+            modules[name].params = params?$.extend(true, {}, params):{};
             modules[name].init();
 
             modules[name].loaded = true;
