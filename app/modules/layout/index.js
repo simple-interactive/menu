@@ -155,7 +155,7 @@ modules.layout = function(){
         $(self.element).find('[data-product-header]').transition({opacity: 0, y: -200});
         $(self.element).find('[data-product]').transition({opacity: 0, y: 200});
 
-        $('.footer').transition({x:60});
+        $('.footer').transition({x:100});
 
         setTimeout(function(){
 
