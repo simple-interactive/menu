@@ -66,7 +66,7 @@ modules.product = function(){
                         });
 
                         var top = 14+Math.floor(productElement.index() / 4)*262 + "px";
-                        var left = 211+Math.floor(productElement.index() % 4)*225 + "px";
+                        var left = 256+Math.floor(productElement.index() % 4)*225 + "px";
 
                         $('[data-product-description] .product-description-content').css({
                             top: top,
