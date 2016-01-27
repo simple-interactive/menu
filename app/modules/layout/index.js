@@ -91,38 +91,41 @@ modules.layout = function(){
 
         self.view.render('layout/view/menu', {sections: self.sections}, function(menu){
             $(self.element).find('[data-container-menu]').html(menu);
+
+            $(self.element).find('[data-container-menu] .menu').transition({x:0});
+
             self.menuExists = true;
         });
 
-        var $menu = $(self.element).find('[data-container-menu] .menu');
-        var $menuBackdrop = $(self.element).find('[data-container-menu] .menu-backdrop');
+        // var $menu = $(self.element).find('[data-container-menu] .menu');
+        // var $menuBackdrop = $(self.element).find('[data-container-menu] .menu-backdrop');
 
-        $(self.element).on('touchstart', '[data-menu-open]', function(){
+        //$(self.element).on('touchstart', '[data-menu-open]', function(){
+        //
+        //    $menuBackdrop.show();
+        //    $menuBackdrop.transition({opacity: 0.6});
+        //
+        //    $menu.transition({x:0});
+        //});
 
-            $menuBackdrop.show();
-            $menuBackdrop.transition({opacity: 0.6});
-
-            $menu.transition({x:0});
-        });
-
-        $(self.element).on('touchstart', '[data-menu-close]', function(){
-
-            $menu.transition({x:-300});
-            $menuBackdrop.transition({opacity: 0});
-
-            setTimeout(function(){
-                $menuBackdrop.hide();
-            }, config.animation.duration);
-        });
+        //$(self.element).on('touchstart', '[data-menu-close]', function(){
+        //
+        //    $menu.transition({x:-300});
+        //    $menuBackdrop.transition({opacity: 0});
+        //
+        //    setTimeout(function(){
+        //        $menuBackdrop.hide();
+        //    }, config.animation.duration);
+        //});
 
         $(self.element).on(self.eventType, '[data-main-section]', function(){
 
-            $menu.transition({x:-300});
-            $menuBackdrop.transition({opacity: 0});
-
-            setTimeout(function(){
-                $menuBackdrop.hide();
-            }, config.animation.duration);
+            //$menu.transition({x:-300});
+            //// $menuBackdrop.transition({opacity: 0});
+            //
+            //setTimeout(function(){
+            //    $menuBackdrop.hide();
+            //}, config.animation.duration);
 
             self.loadSubSection(self.sections[$(this).data('index')]);
         });
@@ -151,6 +154,8 @@ modules.layout = function(){
 
         $(self.element).find('[data-product-header]').transition({opacity: 0, y: -200});
         $(self.element).find('[data-product]').transition({opacity: 0, y: 200});
+
+        $('.footer').transition({x:60});
 
         setTimeout(function(){
 

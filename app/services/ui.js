@@ -26,7 +26,7 @@ window.services.ui = function(){
             var lis = $(el).children();
             var amount = $(el).data('amount');
 
-            for(var i = 0; i < lis.length; i+=amount) {
+            for (var i = 0; i < lis.length; i+=amount) {
                 lis.slice(i, i+amount).wrapAll('<div class="swiper-slide"></div>');
             }
 

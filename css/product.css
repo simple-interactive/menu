@@ -42,9 +42,10 @@
 }
 
 .products.sub-menu {
-    width: 1000px;
+    width: 990px;
     height: 520px;
     margin-top: 30px;
+    margin-right: 0px;
     overflow: hidden;
 }
 
@@ -111,7 +112,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 11;
+    z-index: 12;
     top: 0px;
     background: transparent;
 }
@@ -123,7 +124,7 @@
     border-top-style: solid;
     border-top-width: 4px;
     position: relative;
-    width: 400px;
+    width: 300px;
     height: 128px;
     opacity: 0;
     z-index: 2;
@@ -141,7 +142,7 @@
     font-size: 50px;
     color: white;
     z-index: 1;
-    left: 185px;
+    left: 136px;
 }
 
 .product-description .product-description-content div {

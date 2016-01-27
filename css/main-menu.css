@@ -1,3 +1,4 @@
+/*
 .menu-show {
     position: absolute;
     top: 0px;
@@ -14,12 +15,13 @@
     left: 20px;
     position: absolute;
 }
+*/
 
 [data-container-menu] .menu {
     position: absolute;
     top: 0;
     transform: translate(-300px, 0px);
-    width: 300px;
+    width: 200px;
     height: 100%;
     z-index: 11;
     opacity: 0.8;
@@ -32,6 +34,7 @@
     overflow: hidden;
 }
 
+/*
 [data-container-menu] .menu .menu-wrapper .menu-close {
     position: absolute;
     top: 10px;
@@ -39,6 +42,7 @@
     font-size: 40px;
     z-index: 11;
 }
+*/
 
 .menu .items {
     width: 100%;
@@ -79,6 +83,7 @@
     margin-bottom: 20px;
 }
 
+/*
 .menu-backdrop {
     position: absolute;
     top: 0;
@@ -89,3 +94,4 @@
     opacity: 0;
     display: none;
 }
+*/

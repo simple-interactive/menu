@@ -10,6 +10,8 @@
     font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
     margin-top: 20px;
     text-shadow: 2px 2px 4px black;
+    width: 1150px;
+    margin-left: auto;
 }
 
 .section-header .line {
@@ -97,9 +99,10 @@
 }
 
 .main-menu.sub-menu {
-    width: 1000px;
+    width: 990px;
     height: 520px;
     margin-top: 30px;
+    margin-right: 0px;
     overflow: hidden;
 }
 
