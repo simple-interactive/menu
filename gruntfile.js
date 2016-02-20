@@ -60,6 +60,7 @@ module.exports = function(grunt) {
             build: {
                 files: {
                     'js': [
+                        'bower_components/sha1/src/sha1.js',
                         'bower_components/jquery/dist/jquery.js',
                         'bower_components/bootstrap/dist/js/bootstrap.js',
                         'bower_components/swiper/dist/js/swiper.js',

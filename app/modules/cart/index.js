@@ -66,11 +66,32 @@ modules.cart = function (){
             $('[data-cart-details]').find('[data-make-order]').on('click', function(){
                 services.api.order(
                     services.shoppingCart.getClearOrders(),
+                    'cash',
                     function(){
                         self.finished(true);
                     },
                     function(){
                         self.finished(false);
+                    }
+                );
+            });
+
+            $('[data-cart-details]').find('[data-make-card-order]').on('click', function(){
+
+                services.liqPay.initiatePayment(
+                    services.shoppingCart.getTotalPrice(),
+                    "Оплата заказа",
+                    function(){
+                        services.api.order(
+                            services.shoppingCart.getClearOrders(),
+                            'card',
+                            function(){
+                                self.finished(true);
+                            },
+                            function(){
+                                self.finished(false);
+                            }
+                        );
                     }
                 );
             });

@@ -6,6 +6,7 @@
     "components-font-awesome": "*",
     "swiper": "*",
     "jquery.transit": "*",
-    "animatecss": "https://github.com/daneden/animate.css.git"
+    "animatecss": "https://github.com/daneden/animate.css.git",
+    "sha1": "https://github.com/Caligatio/jsSHA.git"
   }
 }

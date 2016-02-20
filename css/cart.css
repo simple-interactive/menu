@@ -90,16 +90,24 @@
     margin-right: 11px;
 }
 
-[data-cart-thanks] .modal-dialog {
+[data-modal-message] .modal-dialog, [data-cart-thanks] .modal-dialog {
     width: 600px !important;
 }
 
-[data-cart-thanks] .modal-content {
+[data-modal-message] .modal-content, [data-cart-thanks] .modal-content {
     height: 300px !important;
 }
 
-[data-cart-thanks] .message {
+[data-modal-message] .message, [data-cart-thanks] .message {
     text-align: center;
     line-height: 46px;
     font-size: 24px;
+}
+
+[data-modal-message] {
+    z-index: 2050;
+}
+
+[data-make-card-order] {
+    right: 350px !important;
 }

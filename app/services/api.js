@@ -154,11 +154,12 @@ window.services.api = function(){
 
     /**
      * @param {Object} order
+     * @param {String} paymentMethod
      * @param {Function} successCallback
      * @param {Function} failureCallback
      */
-    this.order = function(order, successCallback, failureCallback){
-        self.call('post', 'order', {order: order}, successCallback, failureCallback);
+    this.order = function(order, paymentMethod, successCallback, failureCallback){
+        self.call('post', 'order', {order: order, paymentMethod: paymentMethod}, successCallback, failureCallback);
     };
 
     /**
@@ -167,6 +168,14 @@ window.services.api = function(){
      */
     this.callWaiter = function(successCallback){
         self.call('get', 'call/waiter', {}, successCallback);
+    };
+
+    /**
+     * Gets public and private liqPay keys
+     * @param {Function} callback
+     */
+    this.getLiqpayKeys = function(callback){
+        self.call('get', 'payment', {}, callback);
     };
 
     /**

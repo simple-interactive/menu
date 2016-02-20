@@ -191,6 +191,21 @@ modules.layout = function(){
         });
     };
 
+    this.showMessage = function(header, message){
+
+        self.view.render('layout/view/message', {header: header, message: message}, function(tpl){
+
+            $('body').prepend(tpl);
+
+            $('[data-modal-message]')
+                .modal({backdrop: 'static'})
+                .on('hidden.bs.modal', function(){
+                    $('[data-modal-message]').remove();
+                });
+
+        });
+    };
+
     this.unload = function(){
 
         if ($('[data-cart-thanks]').size()) {
