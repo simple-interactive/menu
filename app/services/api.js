@@ -174,8 +174,8 @@ window.services.api = function(){
      * Gets public and private liqPay keys
      * @param {Function} callback
      */
-    this.getLiqpayKeys = function(callback){
-        self.call('get', 'key', {}, callback);
+    this.getSettings = function(callback){
+        self.call('get', 'settings', {}, callback);
     };
 
     /**

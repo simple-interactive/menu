@@ -79,7 +79,7 @@ window.services.liqPay = function(){
     };
 
     this.loadKeys = function(){
-        services.api.getLiqpayKeys(function(response){
+        services.api.getSettings(function(response){
             self.publicKey = response.publicKey;
             self.privateKey = response.privateKey;
         });
