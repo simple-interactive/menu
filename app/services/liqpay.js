@@ -80,8 +80,8 @@ window.services.liqPay = function(){
 
     this.loadKeys = function(){
         services.api.getSettings(function(response){
-            self.publicKey = response.publicKey;
-            self.privateKey = response.privateKey;
+            self.publicKey = response.settings.liqpayPublicKey;
+            self.privateKey = response.settings.liqpayPrivateKey;
         });
     };
 
