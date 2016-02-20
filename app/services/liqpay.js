@@ -93,6 +93,8 @@ window.services.liqPay = function(){
         $('#liqpay_loader').hide();
     };
 
-    this.loadKeys();
-    this.reLoadLiqpayContainer();
+    this.init = function(){
+        this.loadKeys();
+        this.reLoadLiqpayContainer();
+    }
 };

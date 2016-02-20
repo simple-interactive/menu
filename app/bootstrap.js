@@ -5,6 +5,7 @@ $(function(){
         config.token = token;
         storage.setItem('token', config.token);
         services.api.config.token = config.token;
+        services.liqPay.init();
 
         module.load('layout');
     };
