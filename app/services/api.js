@@ -167,7 +167,7 @@ window.services.api = function(){
      * @param {Function} successCallback
      */
     this.callWaiter = function(successCallback){
-        self.call('get', 'call/waiter', {}, successCallback);
+        self.call('get', 'call/waiter', {_: Math.random()}, successCallback);
     };
 
     /**
