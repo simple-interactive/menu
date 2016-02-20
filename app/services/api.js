@@ -175,7 +175,7 @@ window.services.api = function(){
      * @param {Function} callback
      */
     this.getLiqpayKeys = function(callback){
-        self.call('get', 'payment', {}, callback);
+        self.call('get', 'key', {}, callback);
     };
 
     /**
