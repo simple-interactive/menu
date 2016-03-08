@@ -112,6 +112,11 @@
     height: 225px;
 }
 
+.menu-wrapper .swiper-container {
+    height: 655px;
+    top: 145px;
+}
+
 .swiper-container {
     padding-top: 10px;
     width: 100%;

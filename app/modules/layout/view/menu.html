@@ -1,28 +1,20 @@
-<% if (sections.length) { %>
-
-<!--<div class="menu-show" data-menu-open="true">-->
-    <!--<span data-stylized="true" data-color="brand" class="fa fa-bars animated bounceIn"></span>-->
-<!--</div>-->
-
-<!--<div class="menu-backdrop" data-stylized="true" data-background-color="foreground" data-menu-close="true"></div>-->
-
 <div class="menu" data-stylized="true" data-background-color="foreground">
 
     <div class="menu-wrapper">
 
-        <!--<div class="menu-close" data-menu-close="true">-->
-            <!--<span data-stylized="true" data-color="brand" class="fa fa-close"></span>-->
-        <!--</div>-->
+        <div data-menu-logo="true" class="menu-logo" style="background-image: url(<%= style.backgroundImage.url %>)"></div>
 
-        <div class="items" data-swiper="true" data-amount="4">
+        <div class="items" data-swiper="true" data-amount="3">
 
-            <% for (var i=0; i<sections.length; i++) { %>
+            <% if (sections.length) { %>
+                <% for (var i=0; i<sections.length; i++) { %>
 
-                <div class="item" data-main-section="true" data-index="<%= i %>">
-                    <div class="image" style="background-image: url(<%= sections[i].image.url %>)"></div>
-                    <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
-                </div>
+                    <div class="item" data-main-section="true" data-index="<%= i %>">
+                        <div class="image" style="background-image: url(<%= sections[i].image.url %>)"></div>
+                        <div data-stylized="true" data-color="background" class="title"><%= sections[i].title %></div>
+                    </div>
 
+                <% } %>
             <% } %>
 
         </div>
@@ -30,5 +22,3 @@
     </div>
 
 </div>
-
-<% } %>

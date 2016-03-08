@@ -1,22 +1,3 @@
-/*
-.menu-show {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    font-size: 40px;
-    z-index: 10;
-    width: 80px;
-    height: 80px;
-}
-
-.menu-show span {
-    display: block;
-    top: 20px;
-    left: 20px;
-    position: absolute;
-}
-*/
-
 [data-container-menu] .menu {
     position: absolute;
     top: 0;
@@ -34,15 +15,16 @@
     overflow: hidden;
 }
 
-/*
-[data-container-menu] .menu .menu-wrapper .menu-close {
+[data-container-menu] .menu .menu-logo {
+    width: 160px;
     position: absolute;
-    top: 10px;
-    right: 30px;
-    font-size: 40px;
-    z-index: 11;
+    top: 0;
+    left: 20px;
+    height: 146px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
-*/
 
 .menu .items {
     width: 100%;
@@ -53,10 +35,6 @@
 .menu .items .item {
     margin-bottom: 10px;
     margin-top: 10px;
-}
-
-.menu .items .item:first-child {
-    margin-top: 60px;
 }
 
 .menu .items .item .image {
@@ -81,17 +59,5 @@
     font-size: 20px;
     text-align: center;
     margin-bottom: 20px;
+    padding: 5px;
 }
-
-/*
-.menu-backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    opacity: 0;
-    display: none;
-}
-*/
