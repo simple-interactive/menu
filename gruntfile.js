@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
     var config = {
         prod : {
-            endpoint: 'http://http://execrot.backend.simple.direct',
+            endpoint: 'http://execrot.backend.simple.direct',
             token: '',
             animation: {
                 duration: 350
