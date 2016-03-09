@@ -7,7 +7,7 @@ modules.layout = function(){
     this.sections = null;
     this.menuExists = false;
 
-    this.eventType = 'touchstart';
+    this.eventType = 'click';
 
     this.init = function () {
 
