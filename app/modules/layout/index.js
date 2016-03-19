@@ -74,15 +74,13 @@ modules.layout = function(){
         $('.footer').transition({x:0});
 
         self.view.render('layout/view/main', {sections: self.sections, style: self.style}, function(tpl){
+
             $(self.element).find('[data-container]').html(tpl);
 
-            self.showUi();
-        });
-    };
+            $(self.element).find('[data-section]').transition({opacity: 1});
+            $(self.element).find('[data-company]').transition({opacity: 1});
 
-    this.showUi = function(){
-        $(self.element).find('[data-section]').transition({opacity: 1});
-        $(self.element).find('[data-company]').transition({opacity: 1});
+        });
     };
 
     this.updateStyles = function(callback){
@@ -106,8 +104,13 @@ modules.layout = function(){
     this.initiateMenu = function(){
 
         self.view.render('layout/view/menu', {sections: self.sections, style: self.style}, function(menu){
+
             $(self.element).find('[data-container-menu]').html(menu);
             $(self.element).find('[data-container-menu] .menu').transition({x:0});
+
+            $(self.element).find('[data-main-section]').unbind('click').bind('click', function(){
+                self.loadSubSection(self.sections[$(this).data('index')]);
+            });
 
             $(self.element).find('[data-menu-logo]').unbind('touchstart').bind('touchstart', function() {
 
@@ -124,10 +127,6 @@ modules.layout = function(){
 
                 setTimeout(self.showMain, config.animation.duration);
             });
-        });
-
-        $(self.element).on(self.eventType, '[data-main-section]', function(){
-            self.loadSubSection(self.sections[$(this).data('index')]);
         });
     };
 
