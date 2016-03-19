@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
     var config = {
         prod : {
-            endpoint: 'http://execrot.backend.simple.direct',
+            endpoint: 'http://192.168.1.100:81',
             token: '',
             animation: {
                 duration: 350
@@ -122,10 +122,18 @@ module.exports = function(grunt) {
             var layout = grunt.file.read(build+'/index.html').split('<!-- ' + section + ' -->');
             layout[1] = content;
             grunt.file.write(build+'/index.html', layout.join(''));
-        }
+        };
 
-        replaceSection('Grunt:Build:JSSection', "<script src=\"app.min.js?_=" + Number(new Date()) + "\"></script>");
-        replaceSection('Grunt:Build:CSSSection', "<link href=\"app.min.css?_=" + Number(new Date()) + "\" rel=\"stylesheet\" />");
+        function includeScripts(){
+            return "<script>document.write('<scr' + 'ipt src=\"app.min.js?_=" + Number(new Date()) + "\"></sc' + 'ript>');</script>";
+        };
+
+        function includeStyles(){
+            return "<script>document.write('<link href=\"app.min.css?_=" + Number(new Date()) + "\" rel=\"stylesheet\" />');</script>";
+        };
+
+        replaceSection('Grunt:Build:JSSection', includeScripts());
+        replaceSection('Grunt:Build:CSSSection', includeStyles());
         replaceSection('Grunt:Build:Config', null);
     });
 
