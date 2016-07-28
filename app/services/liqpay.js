@@ -39,13 +39,14 @@ window.services.liqPay = function(){
         data.public_key = self.publicKey;
         data.sandbox = 1;
 
-        var orderId = data.order_id;
-
         data = Base64.encode(JSON.stringify(data));
 
         var sha = new jsSHA("SHA-1", "TEXT");
         sha.update(self.privateKey + data + self.privateKey);
         var signature = sha.getHash("B64");
+
+        console.log(signature);
+        console.log(data);
 
         LiqPayCheckout.init({
             data: data,
@@ -57,18 +58,20 @@ window.services.liqPay = function(){
             if (data.result == 'success' && (data.status == 'wait_accept' || data.status == 'sandbox')) {
 
                 if (successCallback) {
-                    successCallback();
+                    successCallback(data);
                 }
             }
             else {
                 if (failCallback) {
-                    failCallback();
+                    failCallback(data);
                 }
             }
 
         }).on("liqpay.ready", function(data){
+            console.log('liqpay-ready', data);
             self.hideLoader();
         }).on("liqpay.close", function(data){
+            console.log('liqpay-close', data);
             self.reLoadLiqpayContainer();
         });
     };

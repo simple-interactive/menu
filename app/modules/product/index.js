@@ -51,43 +51,42 @@ modules.product = function(){
 
                     var productElement = $(this);
 
-                    self.view.render('product/view/description', {product: self.products[productElement.data('index')]}, function(tpl){
+                    var data = {
+                        product: self.products[productElement.data('index')],
+                        side: $(this).index() > 3 ? 'top': 'bottom',
+                        index: $(this).index() > 3 ? $(this).index()-4: $(this).index(),
+                        productIndex: $(this).data('index')
+                    };
+
+                    self.view.render('product/view/description', data, function(tpl){
+
                         $('body').prepend(tpl);
 
-                        $('[data-product-description]').on('touchstart', function(){
+                        $('[data-product-description], [data-product-description] .close, [data-product-description] .button').on('touchstart', function(){
                             $('[data-product-description] .product-description-content').transition({opacity: 0});
                             setTimeout(function(){
                                 $('[data-product-description]').remove();
                             }, config.animation.duration);
                         });
 
-                        $('[data-product-description] .product-description-content div').on('touchstart', function(e){
-                            e.stopPropagation();
+                        $('[data-product-description] [data-plus]').on('click', function(){
+
+                            services.shoppingCart.add(self.products[$(this).data('index')]);
+
+                            module.load('productDetails', {
+                                index: services.shoppingCart.getAmount()-1,
+                                isTemporary: true
+                            });
+
                         });
 
-                        var top = 14+Math.floor(productElement.index() / 4)*262 + "px";
-                        var left = 256+Math.floor(productElement.index() % 4)*225 + "px";
-
-                        $('[data-product-description] .product-description-content').css({
-                            top: top,
-                            left: left
+                        $('[data-product-description] .product-description-content').on('touchstart', function(e){
+                            e.stopPropagation();
                         });
 
                         $('[data-product-description] .product-description-content').transition({
                             opacity: 1
                         });
-                    });
-                });
-
-                $(self.element).on(self.eventType, '[data-plus]', function(e){
-
-                    e.stopPropagation();
-
-                    services.shoppingCart.add(self.products[$(this).data('index')]);
-
-                    module.load('productDetails', {
-                        index: services.shoppingCart.getAmount()-1,
-                        isTemporary: true
                     });
                 });
 

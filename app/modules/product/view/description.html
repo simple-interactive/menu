@@ -1,9 +1,21 @@
 <div data-product-description="true" class="product-description">
 
-    <div class="product-description-content" data-stylized="true" data-border-color="brand">
-        <div><%= product.description %></div>
+    <div class="product-description-content <%= side %>" data-stylized="true" data-border-color="brand">
 
-        <i class="fa fa-caret-down"></i>
+        <i data-stylized="true" data-color="brand" class="fa <% if (side == 'top') { %> fa-caret-down <% } else { %>fa-caret-up<% } %> index-<%= index %>"></i>
+
+        <div class="line" data-stylized="true" data-background-color="foreground"></div>
+
+        <span class="fa fa-close close" data-stylized="true" data-color="brand"></span>
+
+        <div class="image" style="background-image: url(<%= product.images[0].url %>)"></div>
+
+        <div class="title" data-stylized="true" data-color="brand"><%= product.title %> (<%= product.weight %> мл.)</div>
+        <div class="price" data-stylized="true" data-color="brand"><%= product.price %> грн.</div>
+        <div class="description" data-stylized="true" data-color="brand"><%= product.description %></div>
+
+        <input type="button" class="button" data-plus="true" data-index="<%= productIndex %>" data-stylized="true" data-background-color="brand" data-color="background" value="В корзину" />
+
     </div>
 
 </div>
