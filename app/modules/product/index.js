@@ -53,8 +53,6 @@ modules.product = function(){
 
                     var data = {
                         product: self.products[productElement.data('index')],
-                        side: $(this).index() > 3 ? 'top': 'bottom',
-                        index: $(this).index() > 3 ? $(this).index()-4: $(this).index(),
                         productIndex: $(this).data('index')
                     };
 
@@ -62,30 +60,34 @@ modules.product = function(){
 
                         $('body').prepend(tpl);
 
-                        $('[data-product-description], [data-product-description] .close, [data-product-description] .button').on('touchstart', function(){
-                            $('[data-product-description] .product-description-content').transition({opacity: 0});
-                            setTimeout(function(){
+                        $('[data-product-description]')
+                            .modal({backdrop: 'static'})
+                            .on('hidden.bs.modal', function(){
                                 $('[data-product-description]').remove();
-                            }, config.animation.duration);
-                        });
+                            });
+
+                        if (data.product.images.length > 1) {
+
+                            new Swiper ($('[data-product-description]').find('.swiper-container'), {
+                                pagination: '.swiper-pagination',
+                                loop: true,
+                                width: 1098
+                            });
+                        }
 
                         $('[data-product-description] [data-plus]').on('click', function(){
 
                             services.shoppingCart.add(self.products[$(this).data('index')]);
 
-                            module.load('productDetails', {
-                                index: services.shoppingCart.getAmount()-1,
-                                isTemporary: true
-                            });
+                            $('[data-product-description]').modal('hide');
 
-                        });
+                            setTimeout(function(){
+                                module.load('productDetails', {
+                                    index: services.shoppingCart.getAmount()-1,
+                                    isTemporary: true
+                                });
+                            }, config.animation.duration);
 
-                        $('[data-product-description] .product-description-content').on('touchstart', function(e){
-                            e.stopPropagation();
-                        });
-
-                        $('[data-product-description] .product-description-content').transition({
-                            opacity: 1
                         });
                     });
                 });

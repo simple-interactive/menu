@@ -1,21 +1,45 @@
-<div data-product-description="true" class="product-description">
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-product-description="true">
 
-    <div class="product-description-content <%= side %>" data-stylized="true" data-border-color="brand">
+    <div class="modal-dialog" role="document">
 
-        <i data-stylized="true" data-color="brand" class="fa <% if (side == 'top') { %> fa-caret-down <% } else { %>fa-caret-up<% } %> index-<%= index %>"></i>
+        <div class="modal-content">
 
-        <div class="line" data-stylized="true" data-background-color="foreground"></div>
+            <div class="modal-body product-description" data-stylized="true" data-border-color="brand">
 
-        <span class="fa fa-close close" data-stylized="true" data-color="brand"></span>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
 
-        <div class="image" style="background-image: url(<%= product.images[0].url %>)"></div>
+                        <% product.images.forEach(function(index, image){ %>
+                            <div class="swiper-slide product-image"
+                                 style="background-image: url(<%= index.url %>)">
+                            </div>
+                        <% }); %>
 
-        <div class="title" data-stylized="true" data-color="brand"><%= product.title %> (<%= product.weight %> мл.)</div>
-        <div class="price" data-stylized="true" data-color="brand"><%= product.price %> грн.</div>
-        <div class="description" data-stylized="true" data-color="brand"><%= product.description %></div>
+                    </div>
 
-        <input type="button" class="button" data-plus="true" data-index="<%= productIndex %>" data-stylized="true" data-background-color="brand" data-color="background" value="В корзину" />
+                    <% if (product.images.length > 1) { %>
+                        <div class="swiper-pagination"></div>
+                    <% } %>
 
+                </div>
+
+                <div class="product-description-content"
+                     data-stylized="true"
+                     data-border-color="foreground"
+                     data-background-color="background">
+
+                    <div class="title" data-stylized="true" data-color="brand">
+                        <%= product.title %> (<%= product.weight %> мл.)
+                        <b><%= product.price %> грн.</b>
+                    </div>
+                    <div class="description" data-stylized="true" data-color="brand"><%= product.description %></div>
+
+                    <div class="close" data-dismiss="modal" data-stylized="true" data-color="brand"><span class="fa fa-close"></span></div>
+
+                    <input type="button" class="button" data-plus="true" data-index="<%= productIndex %>" data-stylized="true" data-background-color="brand" data-color="background" value="В корзину" />
+
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>

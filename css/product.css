@@ -126,59 +126,18 @@
 }
 
 .product-description .product-description-content {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
     border-radius: 5px;
-    background-color: #ffffff;
     border-top-style: solid;
     border-top-width: 4px;
-    position: relative;
-    width: 889px;
-    height: 270px;
-    opacity: 0;
+    width: 100%;
+    height: 170px;
     z-index: 2;
-    left: 300px;
-    top: 14px;
+    bottom: 0;
     padding: 15px;
     text-align: center;
     font-size: 1.2em;
-}
-
-.product-description .product-description-content.top {
-    top: 124px;
-}
-
-.product-description .product-description-content.bottom {
-    top: 421px;
-    border-bottom-style: solid;
-    border-bottom-width: 4px;
-    border-top-style: initial;
-    border-top-width: initial;
-}
-
-.product-description .product-description-content.bottom i {
-    bottom: initial;
-    top: -30px;
-}
-
-.product-description .product-description-content i {
     position: absolute;
-    bottom: -30px;
-    font-size: 50px;
-    color: white;
-    z-index: 1;
-}
-
-.product-description .product-description-content i.index-3 {
-    left: 768px;
-}
-.product-description .product-description-content i.index-2 {
-    left: 545px;
-}
-.product-description .product-description-content i.index-1 {
-    left: 319px;
-}
-.product-description .product-description-content i.index-0 {
-    left: 95px;
+    opacity: 0.8;
 }
 
 .product-description .product-description-content .close {
@@ -189,51 +148,33 @@
     opacity: 1;
 }
 
-.product-description .product-description-content .image {
-    position: absolute;
-    left: 15px;
-    top: 15px;
-    width: 246px;
-    height: 238px;
+.product-description .product-image {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 10px;
-}
-
-.product-description .product-description-content .line {
-    position: absolute;
-    left: 276px;
-    width: 3px;
-    height: 238px;
-    opacity: 0.2;
-    border-radius: 5px;
 }
 
 .product-description .product-description-content .title {
     position: absolute;
-    left: 290px;
     top: 10px;
     font-size: 26px;
 }
 
 .product-description .product-description-content .price {
     position: absolute;
-    left: 290px;
-    top: 46px;
+    top: 54px;
     font-size: 26px;
     font-weight: bold;
 }
 
 .product-description .product-description-content .description {
     position: absolute;
-    left: 290px;
-    top: 90px;
+    top: 54px;
     font-size: 19px;
     text-align: left;
-    width: 425px;
-    max-height: 150px;
-    height: 165px;
+    width: 80%;
+    max-height: 100px;
+    height: 100px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -250,4 +191,26 @@
     position: absolute;
     right: 15px;
     bottom: 10px;
+}
+
+
+[data-product-description] .modal-body {
+    padding: 0;
+}
+
+[data-product-description] .swiper-container {
+    padding: 0;
+}
+
+[data-product-description] .swiper-wrapper {
+    width: 100%;
+}
+
+[data-product-description] .close {
+    z-index: 2;
+}
+
+[data-product-description] .swiper-pagination {
+    bottom: 180px;
+    top: initial !important;
 }
