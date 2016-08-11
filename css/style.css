@@ -13,7 +13,7 @@ body .background-image {
     left: -10%;
     width: 120%;
     height: 120%;
-    -webkit-filter: blur(2px) brightness(0.8);
+    -webkit-filter: blur(1px) brightness(0.8);
 }
 
 html {
