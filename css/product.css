@@ -166,6 +166,7 @@
     background-color: rgba(255,255,255,0.5);
     padding-left: 10px;
     padding-right: 10px;
+    color: black;
 }
 
 .product-description .product-description-content .price {
@@ -193,6 +194,7 @@
     padding-bottom: 5px;
     padding-right: 10px;
     font-weight: bold;
+    color: black;
 }
 
 .product-description .product-description-content .button {
